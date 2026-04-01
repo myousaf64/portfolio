@@ -1,11 +1,25 @@
 @use "common.scss";
 
 .projects {
-	align-items: start;
-	.title {
-		margin-bottom: 0.5rem;
-	}
-	.para {
-		margin-bottom: 2rem;
-	}
+  min-height: calc(100vh - 78px);
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+}
+
+.projects .para {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.projectsWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 960px) {
+  .projectsWrapper {
+    grid-template-columns: 1fr;
+  }
 }

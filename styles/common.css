@@ -1,157 +1,190 @@
-/**
- * Get the colour with the provided type and value parameters.
- *
- * type is the type of colour you want to retrieve. Possible values are 
- * ["accent", "neutral"]
- *
- * value is the tone of the colour you want to retrieve. Values range from
- * 0 - 100 with 0 being black and 100 being white.
- */
 :root {
-  --ffSans: "Hanken Grotesk", sans-serif;
-  --ffMonospace: "Fragment Mono", monospace;
+  --font-sans: "Hanken Grotesk", sans-serif;
+  --font-mono: "Fragment Mono", monospace;
+
+  --bg: #f5f4ef;
+  --bg-soft: #eceae2;
+  --panel: rgba(255, 255, 255, 0.72);
+  --text: #121212;
+  --text-muted: #54514a;
+  --line: #d6d1c4;
+  --accent: #1f5e58;
+  --accent-soft: #2b7870;
 }
 
-*,
-*::after,
-*::before {
-  padding: 0;
+* {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: var(--ffSans);
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
-  overflow-x: hidden;
   scroll-behavior: smooth;
-  background-color: hsl(160, 1%, 10%);
-  color: hsl(70, 81%, 90%);
+  background: radial-gradient(circle at 10% 15%, #ffffff 0%, transparent 40%),
+    radial-gradient(circle at 85% 0%, #e6efe8 0%, transparent 36%),
+    var(--bg);
+  color: var(--text);
 }
 
-::-moz-selection {
-  background-color: hsl(70, 25%, 50%);
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  line-height: 1.5;
 }
 
 ::selection {
-  background-color: hsl(70, 25%, 50%);
-}
-
-section {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  background: #bbd6d2;
 }
 
 header {
-  position: fixed;
-  width: 100vw;
-  background-color: rgba(25, 26, 26, 0.2);
-  -webkit-backdrop-filter: blur(0.5rem);
-  backdrop-filter: blur(0.5rem);
-  padding: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--bg) 76%, white 24%);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent 30%);
 }
 
-nav ul {
+nav {
+  width: min(1080px, calc(100% - 2.5rem));
+  margin-inline: auto;
+  padding: 1rem 0;
+}
+
+nav ul,
+.navbar {
+  list-style: none;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  gap: 1.1rem;
 }
-nav ul li {
-  list-style-type: none;
-}
-nav ul li a {
+
+nav a {
   text-decoration: none;
-  font: inherit;
-  color: unset;
-  transition: color 150ms ease;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  transition: color 180ms ease;
 }
-nav ul li a:hover {
-  color: hsl(70, 36%, 60%);
+
+nav a:hover {
+  color: var(--text);
+}
+
+section {
+  width: min(1080px, calc(100% - 2.5rem));
+  margin-inline: auto;
+  padding: 4.5rem 0;
+}
+
+.title {
+  font-size: clamp(1.85rem, 2.6vw, 2.7rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .overline {
-  font-family: var(--ffMonospace);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: small;
+  letter-spacing: 0.09em;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
   cursor: pointer;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  font-size: clamp(0.75rem, 1.75vmin, 1.25rem);
-  background-color: hsl(160, 64%, 80%);
-  color: hsl(160, 4%, 20%);
-  transition: 250ms ease;
-  transition-property: background-color, color;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.68rem 1.25rem;
+  transition: all 180ms ease;
 }
-.btn:hover {
-  background-color: hsl(160, 36%, 60%);
-  color: hsl(160, 81%, 90%);
-}
+
 .btn--primary {
-  background-color: hsl(70, 25%, 50%);
-  color: hsl(70, 81%, 90%);
-  border: none;
+  background: var(--accent);
+  color: #ffffff;
 }
+
 .btn--primary:hover {
-  background-color: hsl(70, 36%, 60%);
-  color: hsl(70, 81%, 90%);
+  background: var(--accent-soft);
 }
+
 .btn--outlined {
   background: transparent;
-  border: 1px solid hsl(160, 4%, 20%);
-  color: hsl(160, 81%, 90%);
+  border-color: var(--line);
+  color: var(--text);
 }
+
 .btn--outlined:hover {
-  background-color: hsl(160, 4%, 20%);
-  color: hsl(160, 98.01%, 99%);
+  border-color: var(--text-muted);
+  background: color-mix(in srgb, var(--bg-soft) 55%, white 45%);
 }
 
 project-card {
-  font-family: var(--ffMonospace);
-  padding: 1rem;
-  border: 1px solid currentColor;
-  border-radius: 0.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
+
 project-card * {
-  font: inherit;
+  font-family: inherit;
 }
-project-card .tag {
-  font-size: clamp(0.35rem, 1.2vmin, 0.75rem);
-  text-transform: uppercase;
-  padding: clamp(1px, 1vmin, 0.5rem) clamp(2px, 1.2vmin, 0.75rem);
-  background-color: hsl(70, 100%, 10%);
-  color: hsl(70, 81%, 90%);
-  border-radius: 100rem;
+
+project-card .project__title {
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
 }
+
 project-card .tagWrapper {
-  margin-top: 0.25rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
-project-card .project__title {
-  font-size: clamp(1rem, 2vmin, 2rem);
+
+project-card .tag {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  color: var(--text-muted);
 }
+
 project-card .project__desc {
-  font-size: clamp(0.75rem, 1.5vmin, 1.5rem);
-  margin-top: 1rem;
-  flex-grow: 1;
-  max-width: 70ch;
+  color: var(--text-muted);
+  font-size: 0.92rem;
 }
+
 project-card .project__linkBtn {
-  width: 100%;
-  border: none;
-  margin-top: 1rem;
-  border-radius: 0.25rem;
-} /*# sourceMappingURL=common.css.map */
+  justify-self: start;
+}
+
+.fade {
+  opacity: 1;
+  transform: none;
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+@media (max-width: 720px) {
+  nav ul,
+  .navbar {
+    flex-wrap: wrap;
+    gap: 0.7rem 1rem;
+  }
+
+  section {
+    width: min(1080px, calc(100% - 1.25rem));
+    padding: 3.5rem 0;
+  }
+}

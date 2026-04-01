@@ -1,167 +1,23 @@
-/**
- * Get the colour with the provided type and value parameters.
- *
- * type is the type of colour you want to retrieve. Possible values are 
- * ["accent", "neutral"]
- *
- * value is the tone of the colour you want to retrieve. Values range from
- * 0 - 100 with 0 being black and 100 being white.
- */
-:root {
-  --ffSans: "Hanken Grotesk", sans-serif;
-  --ffMonospace: "Fragment Mono", monospace;
-}
-
-*,
-*::after,
-*::before {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: var(--ffSans);
-}
-
-html {
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  background-color: hsl(160, 1%, 10%);
-  color: hsl(70, 81%, 90%);
-}
-
-::-moz-selection {
-  background-color: hsl(70, 25%, 50%);
-}
-
-::selection {
-  background-color: hsl(70, 25%, 50%);
-}
-
-section {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-header {
-  position: fixed;
-  width: 100vw;
-  background-color: rgba(25, 26, 26, 0.2);
-  -webkit-backdrop-filter: blur(0.5rem);
-  backdrop-filter: blur(0.5rem);
-  padding: 2rem;
-}
-
-nav ul {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-nav ul li {
-  list-style-type: none;
-}
-nav ul li a {
-  text-decoration: none;
-  font: inherit;
-  color: unset;
-  transition: color 150ms ease;
-}
-nav ul li a:hover {
-  color: hsl(70, 36%, 60%);
-}
-
-.overline {
-  font-family: var(--ffMonospace);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: small;
-}
-
-.btn {
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  font-size: clamp(0.75rem, 1.75vmin, 1.25rem);
-  background-color: hsl(160, 64%, 80%);
-  color: hsl(160, 4%, 20%);
-  transition: 250ms ease;
-  transition-property: background-color, color;
-}
-.btn:hover {
-  background-color: hsl(160, 36%, 60%);
-  color: hsl(160, 81%, 90%);
-}
-.btn--primary {
-  background-color: hsl(70, 25%, 50%);
-  color: hsl(70, 81%, 90%);
-  border: none;
-}
-.btn--primary:hover {
-  background-color: hsl(70, 36%, 60%);
-  color: hsl(70, 81%, 90%);
-}
-.btn--outlined {
-  background: transparent;
-  border: 1px solid hsl(160, 4%, 20%);
-  color: hsl(160, 81%, 90%);
-}
-.btn--outlined:hover {
-  background-color: hsl(160, 4%, 20%);
-  color: hsl(160, 98.01%, 99%);
-}
-
-project-card {
-  font-family: var(--ffMonospace);
-  padding: 1rem;
-  border: 1px solid currentColor;
-  border-radius: 0.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-project-card * {
-  font: inherit;
-}
-project-card .tag {
-  font-size: clamp(0.35rem, 1.2vmin, 0.75rem);
-  text-transform: uppercase;
-  padding: clamp(1px, 1vmin, 0.5rem) clamp(2px, 1.2vmin, 0.75rem);
-  background-color: hsl(70, 100%, 10%);
-  color: hsl(70, 81%, 90%);
-  border-radius: 100rem;
-}
-project-card .tagWrapper {
-  margin-top: 0.25rem;
-  display: flex;
-  gap: 0.5rem;
-}
-project-card .project__title {
-  font-size: clamp(1rem, 2vmin, 2rem);
-}
-project-card .project__desc {
-  font-size: clamp(0.75rem, 1.5vmin, 1.5rem);
-  margin-top: 1rem;
-  flex-grow: 1;
-  max-width: 70ch;
-}
-project-card .project__linkBtn {
-  width: 100%;
-  border: none;
-  margin-top: 1rem;
-  border-radius: 0.25rem;
-}
-
 .projects {
-  align-items: start;
+  min-height: calc(100vh - 78px);
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
 }
-.projects .title {
-  margin-bottom: 0.5rem;
-}
+
 .projects .para {
-  margin-bottom: 2rem;
-} /*# sourceMappingURL=projects.css.map */
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.projectsWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 960px) {
+  .projectsWrapper {
+    grid-template-columns: 1fr;
+  }
+}

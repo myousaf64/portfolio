@@ -1,176 +1,190 @@
-@use "sass:math";
-
-// CHANGE THESE TO CHANGE THEME
-$HUE_MAIN: 70;
-$HUE_COMPLIMENTARY: calc($HUE_MAIN + 90);
-
-/**
- * Get the colour with the provided type and value parameters.
- *
- * type is the type of colour you want to retrieve. Possible values are 
- * ["accent", "neutral"]
- *
- * value is the tone of the colour you want to retrieve. Values range from
- * 0 - 100 with 0 being black and 100 being white.
- */
-@function getColour($type, $value, $saturation: 0%) {
-	$sat: $saturation * 1%;
-	@if ($saturation == 0%) {
-		$sat: math.div($value, 100) * math.div($value, 100) * 100%;
-	}
-	$light: $value * 1%;
-	@if ($type == "accent") {
-		@return hsl($HUE_MAIN, $sat, $light);
-	}
-	@return hsl($HUE_COMPLIMENTARY, $sat, $light);
-}
-
 :root {
-	// Font Families
-	--ffSans: "Hanken Grotesk", sans-serif;
-	--ffMonospace: "Fragment Mono", monospace;
+  --font-sans: "Hanken Grotesk", sans-serif;
+  --font-mono: "Fragment Mono", monospace;
+
+  --bg: #f5f4ef;
+  --bg-soft: #eceae2;
+  --panel: rgba(255, 255, 255, 0.72);
+  --text: #121212;
+  --text-muted: #54514a;
+  --line: #d6d1c4;
+  --accent: #1f5e58;
+  --accent-soft: #2b7870;
 }
 
-*,
-*::after,
-*::before {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	font-family: var(--ffSans);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
-	overflow-x: hidden;
-	scroll-behavior: smooth;
-	background-color: getColour("neutral", 10);
-	color: getColour("accent", 90);
+  scroll-behavior: smooth;
+  background: radial-gradient(circle at 10% 15%, #ffffff 0%, transparent 40%),
+    radial-gradient(circle at 85% 0%, #e6efe8 0%, transparent 36%),
+    var(--bg);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  line-height: 1.5;
 }
 
 ::selection {
-	background-color: getColour("accent", 50);
-}
-
-section {
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 2rem;
+  background: #bbd6d2;
 }
 
 header {
-	position: fixed;
-	width: 100vw;
-	background-color: transparentize(
-		$color: getColour("neutral", 10),
-		$amount: 0.8
-	);
-	backdrop-filter: blur(0.5rem);
-	padding: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--bg) 76%, white 24%);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent 30%);
 }
 
 nav {
-	ul {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		gap: 2rem;
-		li {
-			list-style-type: none;
-			a {
-				text-decoration: none;
-				font: inherit;
-				color: unset;
-				transition: color 150ms ease;
-				&:hover {
-					color: getColour("accent", 60);
-				}
-			}
-		}
-	}
+  width: min(1080px, calc(100% - 2.5rem));
+  margin-inline: auto;
+  padding: 1rem 0;
+}
+
+nav ul,
+.navbar {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  transition: color 180ms ease;
+}
+
+nav a:hover {
+  color: var(--text);
+}
+
+section {
+  width: min(1080px, calc(100% - 2.5rem));
+  margin-inline: auto;
+  padding: 4.5rem 0;
+}
+
+.title {
+  font-size: clamp(1.85rem, 2.6vw, 2.7rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .overline {
-	font-family: var(--ffMonospace);
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-size: small;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
 }
 
 .btn {
-	padding: 0.75rem 1.5rem;
-	cursor: pointer;
-	border-radius: 0.5rem;
-	font-weight: 500;
-	font-size: clamp(0.75rem, 1.75vmin, 1.25rem);
-	background-color: getColour("neutral", 80);
-	color: getColour("neutral", 20);
-	transition: 250ms ease;
-	transition-property: background-color, color;
-	&:hover {
-		background-color: getColour("neutral", 60);
-		color: getColour("neutral", 90);
-	}
-	&--primary {
-		background-color: getColour("accent", 50);
-		color: getColour("accent", 90);
-		border: none;
-		&:hover {
-			background-color: getColour("accent", 60);
-			color: getColour("accent", 90);
-		}
-	}
-	&--outlined {
-		background: transparent;
-		border: 1px solid getColour("neutral", 20);
-		color: getColour("neutral", 90);
-		&:hover {
-			background-color: getColour("neutral", 20);
-			color: getColour("neutral", 99);
-		}
-	}
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.68rem 1.25rem;
+  transition: all 180ms ease;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn--primary:hover {
+  background: var(--accent-soft);
+}
+
+.btn--outlined {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.btn--outlined:hover {
+  border-color: var(--text-muted);
+  background: color-mix(in srgb, var(--bg-soft) 55%, white 45%);
 }
 
 project-card {
-	font-family: var(--ffMonospace);
-	padding: 1rem;
-	border: 1px solid currentColor;
-	border-radius: 0.5rem;
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column;
-	* {
-		font: inherit;
-	}
-	.tag {
-		font-size: clamp(0.35rem, 1.2vmin, 0.75rem);
-		text-transform: uppercase;
-		padding: clamp(1px, 1vmin, 0.5rem) clamp(2px, 1.2vmin, 0.75rem);
-		background-color: getColour("accent", 10, 100);
-		color: getColour("accent", 90);
-		border-radius: 100rem;
-	}
-	.tagWrapper {
-		margin-top: 0.25rem;
-		display: flex;
-		gap: 0.5rem;
-	}
-	.project__title {
-		font-size: clamp(1rem, 2vmin, 2rem);
-	}
-	.project__desc {
-		font-size: clamp(0.75rem, 1.5vmin, 1.5rem);
-		margin-top: 1rem;
-		flex-grow: 1;
-		max-width: 70ch;
-	}
-	.project__linkBtn {
-		width: 100%;
-		border: none;
-		margin-top: 1rem;
-		border-radius: 0.25rem;
-	}
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+project-card * {
+  font-family: inherit;
+}
+
+project-card .project__title {
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+project-card .tagWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+project-card .tag {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  color: var(--text-muted);
+}
+
+project-card .project__desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+project-card .project__linkBtn {
+  justify-self: start;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+@media (max-width: 720px) {
+  nav ul,
+  .navbar {
+    flex-wrap: wrap;
+    gap: 0.7rem 1rem;
+  }
+
+  section {
+    width: min(1080px, calc(100% - 1.25rem));
+    padding: 3.5rem 0;
+  }
 }
