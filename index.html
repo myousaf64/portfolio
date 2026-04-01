@@ -1,39 +1,3 @@
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-
-  header {
-    background-color: #333;
-    padding: 10px 20px;
-  }
-
-  .navbar {
-    list-style-type: none;
-    display: flex;
-    justify-content: center; /* Center the items */
-    margin: 0;
-    padding: 0;
-  }
-
-  .nav-item {
-    margin: 0 10px; /* Adjust the margin between items */
-  }
-
-  .nav-item a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
-  }
-
-  .nav-item a:hover {
-    background-color: #555;
-    border-radius: 5px;
-  }
-</style>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -41,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <meta name="color-scheme" content="dark light" /> -->
     <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles/common.css" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,14 +23,14 @@
     <header>
       <nav>
         <ul class="navbar">
-          <li class="nav-item"><a href="#">Home</a></li>
+          <li class="nav-item"><a href="#home">Home</a></li>
           <li class="nav-item"><a href="#projects">Projects</a></li>
           <li class="nav-item"><a href="#about">About</a></li>
           <li class="nav-item"><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
-    <section class="landing">
+    <section id="home" class="landing">
       <div class="content">
         <h1 class="title fade">
           Hi, I'm Yousaf <span class="handWave">👋</span>
@@ -101,14 +66,10 @@
       <div class="text">
         <h1 class="about__title title fade">About Me</h1>
         <p class="about__para fade">
-          My name is Mohammed Yousaf and I am currently doing the common core
-          cursus at 42 Abu Dhabi. Aspiring cybersecurity intern with a passion
-          for secure coding, system administration and aiming to specialize in
-          low-level exploitation and analysis. Proven experience in setting up
-          secure environments (virtualization), analyzing vulnerabilities, and
-          administering Linux-based servers. Seeking to contribute technical
-          skills in a dynamic cybersecurity role while continuing to learn and
-          grow in the field..
+          I am Mohammed Yousaf, a 42 Abu Dhabi student focused on systems,
+          secure coding, and practical problem-solving. I enjoy building
+          reliable software, working close to the operating system, and
+          learning through hands-on projects.
         </p>
         <a href="./assets/CV.pdf" download="./assets/CV.pdf">
           <button class="fade btn btn--primary about__downloadBtn">
@@ -127,7 +88,7 @@
         <div class="contactDetailWrapper">
           <div class="contactMethod fade">
             <p class="overline">E-Mail</p>
-            <p class="contactMethod__value">uncle@student.52abudhabi.ae</p>
+            <p class="contactMethod__value">64yousaf@gmail.com</p>
           </div>
           <div class="contactMethod fade">
             <p class="overline">Phone Number</p>
@@ -135,19 +96,9 @@
           </div>
           <div class="contactMethod fade">
             <p class="overline">GitHub</p>
-            <p class="contactMethod__value">Github.com/ToxicMango64</p>
-          </div>
-          <div class="contactMethod fade">
-            <p class="overline">E-Mail</p>
-            <p class="contactMethod__value">uncle@student.52abudhabi.ae</p>
-          </div>
-          <div class="contactMethod fade">
-            <p class="overline">Phone Number</p>
-            <p class="contactMethod__value">+971 50 123 1234</p>
-          </div>
-          <div class="contactMethod fade">
-            <p class="overline">GitHub</p>
-            <p class="contactMethod__value">Github.com/ToxicMango64</p>
+            <p class="contactMethod__value">github.com/myousaf64</p>
+            <!-- <p class="contactMethod__value"><github class="com">
+            <myousaf64></myousaf64></p> -->
           </div>
         </div>
       </div>

@@ -1,305 +1,152 @@
-/**
- * Get the colour with the provided type and value parameters.
- *
- * type is the type of colour you want to retrieve. Possible values are 
- * ["accent", "neutral"]
- *
- * value is the tone of the colour you want to retrieve. Values range from
- * 0 - 100 with 0 being black and 100 being white.
- */
-:root {
-  --ffSans: "Hanken Grotesk", sans-serif;
-  --ffMonospace: "Fragment Mono", monospace;
-}
-
-*,
-*::after,
-*::before {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: var(--ffSans);
-}
-
-html {
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  background-color: hsl(160, 1%, 10%);
-  color: hsl(70, 81%, 90%);
-}
-
-::-moz-selection {
-  background-color: hsl(70, 25%, 50%);
-}
-
-::selection {
-  background-color: hsl(70, 25%, 50%);
-}
-
-section {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-header {
-  position: fixed;
-  width: 100vw;
-  background-color: rgba(25, 26, 26, 0.2);
-  -webkit-backdrop-filter: blur(0.5rem);
-  backdrop-filter: blur(0.5rem);
-  padding: 2rem;
-}
-
-nav ul {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-nav ul li {
-  list-style-type: none;
-}
-nav ul li a {
-  text-decoration: none;
-  font: inherit;
-  color: unset;
-  transition: color 150ms ease;
-}
-nav ul li a:hover {
-  color: hsl(70, 36%, 60%);
-}
-
-.overline {
-  font-family: var(--ffMonospace);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: small;
-}
-
-.btn {
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  font-size: clamp(0.75rem, 1.75vmin, 1.25rem);
-  background-color: hsl(160, 64%, 80%);
-  color: hsl(160, 4%, 20%);
-  transition: 250ms ease;
-  transition-property: background-color, color;
-}
-.btn:hover {
-  background-color: hsl(160, 36%, 60%);
-  color: hsl(160, 81%, 90%);
-}
-.btn--primary {
-  background-color: hsl(70, 25%, 50%);
-  color: hsl(70, 81%, 90%);
-  border: none;
-}
-.btn--primary:hover {
-  background-color: hsl(70, 36%, 60%);
-  color: hsl(70, 81%, 90%);
-}
-.btn--outlined {
-  background: transparent;
-  border: 1px solid hsl(160, 4%, 20%);
-  color: hsl(160, 81%, 90%);
-}
-.btn--outlined:hover {
-  background-color: hsl(160, 4%, 20%);
-  color: hsl(160, 98.01%, 99%);
-}
-
-project-card {
-  font-family: var(--ffMonospace);
-  padding: 1rem;
-  border: 1px solid currentColor;
-  border-radius: 0.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-project-card * {
-  font: inherit;
-}
-project-card .tag {
-  font-size: clamp(0.35rem, 1.2vmin, 0.75rem);
-  text-transform: uppercase;
-  padding: clamp(1px, 1vmin, 0.5rem) clamp(2px, 1.2vmin, 0.75rem);
-  background-color: hsl(70, 100%, 10%);
-  color: hsl(70, 81%, 90%);
-  border-radius: 100rem;
-}
-project-card .tagWrapper {
-  margin-top: 0.25rem;
-  display: flex;
-  gap: 0.5rem;
-}
-project-card .project__title {
-  font-size: clamp(1rem, 2vmin, 2rem);
-}
-project-card .project__desc {
-  font-size: clamp(0.75rem, 1.5vmin, 1.5rem);
-  margin-top: 1rem;
-  flex-grow: 1;
-  max-width: 70ch;
-}
-project-card .project__linkBtn {
-  width: 100%;
-  border: none;
-  margin-top: 1rem;
-  border-radius: 0.25rem;
-}
-
 .landing {
-  flex-direction: row;
-  flex-wrap: wrap-reverse;
-  justify-content: center;
-  gap: 1rem;
-  padding: 6rem;
+  min-height: calc(100vh - 78px);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 3rem);
 }
+
 .landing .content {
-  flex-grow: 1;
+  display: grid;
+  gap: 1rem;
 }
-.landing .title {
-  font-size: clamp(3rem, 6vmin, 5rem);
-  margin-bottom: 0.5rem;
-}
-.landing .handWave {
-  display: inline-block;
-  transform-origin: bottom right;
-  animation: wave 1s ease infinite;
-}
+
 .landing .subtitle {
-  font-size: clamp(1rem, 2vmin, 2rem);
-  overflow-y: hidden;
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.8vw, 1.28rem);
 }
+
 .landing .subtitle .otherTitles {
   display: inline-block;
-  transition: 250ms ease;
-  transition-property: transform, opacity;
-}
-.landing .projectsBtn .arrow {
-  display: inline-block;
+  min-width: 18ch;
+  color: var(--text);
+  font-weight: 600;
   transition: transform 250ms ease;
 }
-.landing .projectsBtn:hover .arrow {
-  transform: translateX(5px);
-}
-.landing .imageWrapper {
-  aspect-ratio: 1/1;
-  flex-grow: 1;
-  min-width: 128px;
+
+.landing .buttonWrapper {
+  margin-top: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.landing .imageWrapper img {
-  height: 80%;
-  vertical-align: middle;
-  text-align: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-.title {
-  font-size: clamp(2rem, 2vmin, 2.5rem);
-  margin-bottom: 1rem;
+.projectsBtn .arrow {
+  display: inline-block;
+  margin-left: 0.3rem;
+  transition: transform 200ms ease;
 }
 
-.buttonWrapper {
-  margin-top: 2rem;
+.projectsBtn:hover .arrow {
+  transform: translateX(3px);
+}
+
+.handWave {
+  display: inline-block;
+  transform-origin: bottom right;
+  animation: wave 1.2s ease;
+}
+
+.imageWrapper {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--panel);
+  padding: 1rem;
+}
+
+.imageWrapper img {
+  width: 100%;
+  max-width: 360px;
+  display: block;
+  margin-inline: auto;
 }
 
 .floating {
-  height: initial;
-  width: initial;
-  padding: 2rem;
-}
-.floating .content {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  width: 100%;
+  padding-top: 1rem;
 }
 
-.projects__viewMoreBtn {
-  width: 100%;
-  margin-top: 1rem;
-  background-color: getColour("neutral", 30);
+.floating .content {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1.25rem;
+  background: var(--panel);
+}
+
+.projects__title {
+  margin-bottom: 1rem;
 }
 
 .projectsWrapper {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.projects__viewMoreBtn {
+  margin-top: 1rem;
 }
 
 .about {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: start;
-}
-.about .text {
-  flex-grow: 1;
-}
-.about__para {
-  font-family: var(--ffMonospace);
-  max-width: 70ch;
-}
-.about__downloadBtn {
-  margin-top: 2rem;
-}
-.about .contact {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 1rem;
-}
-.about .contact__para {
-  font-family: var(--ffMonospace);
-  max-width: 70ch;
-}
-.about .contact .contactDetailWrapper {
   display: grid;
-  flex-grow: 1;
-  grid-template-columns: repeat(2, max-content);
-  width: -moz-fit-content;
-  width: fit-content;
-  gap: 1rem;
-}
-.about .contact .contactDetailWrapper .contactMethod {
-  flex-grow: 1;
-}
-.about .contact .contactDetailWrapper .contactMethod__value {
-  font-family: var(--ffMonospace);
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 3vw, 2.4rem);
+  align-items: start;
 }
 
-.fade {
-  opacity: 0;
-  transform: translate(0px, -10px);
-  transition: 750ms cubic-bezier(0.1, 0.75, 0.57, 1);
-  transition-property: background-color, color, opacity, transform;
+.about .text {
+  display: grid;
+  gap: 1rem;
+}
+
+.about__para,
+.contact__para,
+.contactMethod__value {
+  color: var(--text-muted);
+}
+
+.contact {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1.2rem;
+  background: var(--panel);
+}
+
+.contact .text {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.contactDetailWrapper {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
 }
 
 @keyframes wave {
   0% {
     transform: rotate(0deg);
   }
-  15% {
-    transform: rotate(20deg);
+  20% {
+    transform: rotate(14deg);
   }
-  35% {
-    transform: rotate(5deg);
+  40% {
+    transform: rotate(0deg);
   }
-  75% {
-    transform: rotate(15deg);
+  60% {
+    transform: rotate(10deg);
   }
   100% {
     transform: rotate(0deg);
   }
-} /*# sourceMappingURL=main.css.map */
+}
+
+@media (max-width: 960px) {
+  .landing,
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .projectsWrapper {
+    grid-template-columns: 1fr;
+  }
+}

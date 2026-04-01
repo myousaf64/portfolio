@@ -42,7 +42,7 @@ projectsBtn.onclick = () => {
 
 const projectsWrapper = document.querySelector(".projectsWrapper");
 
-const HIGHLIGHTED_REPO_NAMES = ["wipe", "minitalk", "minishell", "cub3D"];
+const HIGHLIGHTED_REPO_NAMES = ["wipe", "IRC-server", "push_swap", "cub3D"];
 
 // Loop through each repository that was found and create a project card for it and add it to the website
 responseParsed.forEach((repo) => {
@@ -80,7 +80,7 @@ observedPages.forEach((page) => {
 
 const viewMoreProjectsBtn = document.querySelector(".projects__viewMoreBtn");
 viewMoreProjectsBtn.onclick = () => {
-  window.location.assign(window.location.pathname + "projects");
+  window.location.assign("./projects.html");
 };
 
 export { displayElements };
