@@ -1,17 +1,32 @@
 # Portfolio
 
-This is a portfolio.
+Personal portfolio website built with HTML, SCSS, and JavaScript.
 
-## Editing instructions
+## Project structure
 
-To recreate/edit the website you'd need:
+- `index.html` – Home page
+- `projects.html` – Projects page
+- `scripts/` – JavaScript components and page logic
+- `styles/` – SCSS source and compiled CSS
+- `assets/` – Static assets (images, icons, CV)
 
-- A web server
-- A SCSS compiler
+## Run locally
 
-The easiest method for development would be to use VS Code with the following extensions:
+Use the included Make target:
+
+```bash
+make server
+```
+
+Then open `http://localhost:8000`.
+
+## Development workflow
+
+To edit styles, use any SCSS compiler to rebuild the CSS from files in `styles/`.
+
+An easy setup in VS Code is:
 
 - [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass)
 - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 
-Once installed, simply click the `Watch Sass` button and `Go Live` button and you should be running the website locally and everything you change in the files will update.
+After installing, click `Watch Sass` and `Go Live` to auto-compile SCSS and preview changes locally.
