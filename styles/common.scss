@@ -43,17 +43,20 @@ body {
 
 header {
   position: sticky;
-  top: 0;
+  top: 1rem;
   z-index: 50;
-  backdrop-filter: blur(8px);
-  background: color-mix(in srgb, var(--bg) 76%, white 24%);
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent 30%);
+  width: min(1080px, calc(100% - 2.5rem));
+  margin-inline: auto;
 }
 
 nav {
-  width: min(1080px, calc(100% - 2.5rem));
-  margin-inline: auto;
-  padding: 1rem 0;
+  width: 100%;
+  padding: 0.72rem 1.15rem;
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent 30%);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 76%, white 24%);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 24px rgba(18, 18, 18, 0.08);
 }
 
 nav ul,
@@ -61,6 +64,7 @@ nav ul,
   list-style: none;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.1rem;
 }
 
@@ -177,6 +181,15 @@ project-card .project__linkBtn {
 }
 
 @media (max-width: 720px) {
+  header {
+    width: min(1080px, calc(100% - 1.25rem));
+    top: 0.65rem;
+  }
+
+  nav {
+    padding: 0.62rem 0.9rem;
+  }
+
   nav ul,
   .navbar {
     flex-wrap: wrap;
