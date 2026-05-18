@@ -57,6 +57,7 @@
 }
 
 .cssGlobe {
+  --globe-meridian-step: 22px;
   width: 100%;
   max-width: 360px;
   aspect-ratio: 1 / 1;
@@ -87,8 +88,8 @@
   background:
     repeating-linear-gradient(
       90deg,
-      transparent 0 18px,
-      rgba(189, 219, 255, 0.35) 18px 22px
+      transparent 0 calc(var(--globe-meridian-step) - 4px),
+      rgba(189, 219, 255, 0.35) calc(var(--globe-meridian-step) - 4px) var(--globe-meridian-step)
     );
   transform-origin: center;
   animation: globeSpin 7s linear infinite;
@@ -110,7 +111,7 @@
   }
 
   100% {
-    transform: translateX(-22px);
+    transform: translateX(calc(-1 * var(--globe-meridian-step)));
   }
 }
 
