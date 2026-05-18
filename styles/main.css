@@ -54,11 +54,45 @@
   padding: 1rem;
 }
 
-.imageWrapper img {
+.cssGlobe {
   width: 100%;
   max-width: 360px;
+  aspect-ratio: 1/1;
   display: block;
   margin-inline: auto;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.38), transparent 38%), radial-gradient(circle at 68% 72%, rgba(132, 84, 238, 0.3), transparent 52%), linear-gradient(160deg, #0f172a, #1d4ed8 52%, #2563eb);
+  box-shadow: inset -28px -16px 38px rgba(0, 0, 0, 0.38), inset 18px 14px 24px rgba(255, 255, 255, 0.12), 0 12px 30px rgba(37, 99, 235, 0.35);
+}
+
+.cssGlobe::before,
+.cssGlobe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.cssGlobe::before {
+  background: repeating-linear-gradient(90deg, transparent 0 18px, rgba(189, 219, 255, 0.35) 18px 22px);
+  transform-origin: center;
+  animation: globeSpin 7s linear infinite;
+}
+
+.cssGlobe::after {
+  background: repeating-linear-gradient(0deg, transparent 0 20px, rgba(189, 219, 255, 0.24) 20px 22px);
+  transform: scale(1, 0.68);
+}
+
+@keyframes globeSpin {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-22px);
+  }
 }
 
 .floating {
