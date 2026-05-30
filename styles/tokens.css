@@ -1,0 +1,23 @@
+:root {
+  --font-sans: Zalando Sans, Hanken Grotesk, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Berkeley Mono", "Fragment Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --bg: #171717;
+  --bg-soft: #0A0A0A;
+  --panel: rgba(255, 255, 255, 0.04);
+  --text: #FFFFFF;
+  --text-muted: #777777;
+  --line: rgba(255,255,255,0.06);
+  --accent: #2631CC;
+  --accent-soft: rgba(38,49,204,0.08);
+  --accent-yellow: #FFFF00;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --focus-outline: 2px solid var(--accent);
+}
