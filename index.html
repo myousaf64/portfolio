@@ -21,8 +21,9 @@
     <title>My Portfolio</title>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header>
-      <nav>
+      <nav aria-label="Primary navigation">
         <ul class="navbar">
           <li class="nav-item"><a href="#home">Home</a></li>
           <li class="nav-item"><a href="#projects">Projects</a></li>
@@ -31,6 +32,7 @@
         </ul>
       </nav>
     </header>
+    <main id="main">
     <section id="home" class="landing">
       <div class="content">
         <h1 class="title fade">
@@ -101,6 +103,7 @@
         </div>
       </div>
     </section>
+    </main>
   </body>
   <script src="./scripts/index.js" type="module"></script>
 </html>
