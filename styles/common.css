@@ -189,6 +189,27 @@ project-card .project__linkBtn {
   transition: opacity 600ms ease, transform 600ms ease;
 }
 
+/* Shortcuts overlay */
+.shortcuts-overlay {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  display: none;
+  z-index: 9999;
+}
+.shortcuts-overlay.visible { display: block; }
+.shortcuts-overlay h4 { margin: 0 0 6px 0; font-size: 0.95rem; }
+.shortcuts-overlay ul { margin: 0; padding: 0; list-style: none; }
+.shortcuts-overlay li { margin: 4px 0; }
+
 @media (max-width: 720px) {
   header {
     width: min(1080px, calc(100% - 1.25rem));
