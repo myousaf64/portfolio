@@ -114,7 +114,11 @@ section {
   font-family: var(--font-mono);
 }
 
-:focus-visible {
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: var(--focus-outline);
   outline-offset: 2px;
 }
@@ -125,7 +129,7 @@ section {
 }
 
 .btn--primary:hover {
-  background: color-mix(in srgb, var(--accent) 85%, white 15%);
+  background: color-mix(in srgb, var(--accent) 85%, var(--text) 15%);
 }
 
 .btn--outlined {
