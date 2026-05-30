@@ -210,6 +210,46 @@ project-card .project__linkBtn {
 .shortcuts-overlay ul { margin: 0; padding: 0; list-style: none; }
 .shortcuts-overlay li { margin: 4px 0; }
 
+/* Component primitives (simple, intentionally minimal) */
+.btn--primary {
+  background: var(--bg); /* dark button on dark-first page */
+  color: var(--text);
+  height: 44px;
+  padding: 12px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: rgba(0,0,0,0.1) 0px 1px 3px 0px;
+}
+.btn--primary:active { box-shadow: rgba(0,0,0,0.16) 0px 8px 24px 0px; }
+
+.btn--outlined {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.3);
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 6px;
+}
+
+.input {
+  background: #FFFFFF;
+  color: #171717;
+  border: 1px solid #E6E6E6;
+  border-radius: 6px;
+  padding: 12px 16px;
+  height: 44px;
+}
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E6E6E6;
+  border-radius: 6px;
+  padding: 24px;
+  box-shadow: none;
+  color: #171717;
+}
+
 @media (max-width: 720px) {
   header {
     width: min(1080px, calc(100% - 1.25rem));
