@@ -83,4 +83,36 @@ viewMoreProjectsBtn.onclick = () => {
   window.location.assign("./projects.html");
 };
 
+// --- Shift shortcuts overlay (simple, minimal) ---
+const shortcutsOverlay = document.createElement("div");
+shortcutsOverlay.className = "shortcuts-overlay";
+shortcutsOverlay.innerHTML = `
+  <div class="shortcuts-inner">
+    <h4>Shortcuts</h4>
+    <ul>
+      <li><strong>Shift</strong>: show shortcuts</li>
+      <li><strong>P</strong>: go to Projects</li>
+      <li><strong>H</strong>: go to Home</li>
+    </ul>
+  </div>
+`;
+document.body.appendChild(shortcutsOverlay);
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Shift") {
+    shortcutsOverlay.classList.add("visible");
+  }
+  if (e.key.toLowerCase() === "p") {
+    window.location.hash = "#projects";
+  }
+  if (e.key.toLowerCase() === "h") {
+    window.location.hash = "#home";
+  }
+});
+window.addEventListener("keyup", (e) => {
+  if (e.key === "Shift") {
+    shortcutsOverlay.classList.remove("visible");
+  }
+});
+
 export { displayElements };
