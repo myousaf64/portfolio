@@ -114,7 +114,11 @@ section {
   font-family: var(--font-mono);
 }
 
-*:focus {
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: var(--focus-outline);
   outline-offset: 2px;
 }
@@ -125,7 +129,7 @@ section {
 }
 
 .btn--primary:hover {
-  background: var(--accent-soft);
+  background: color-mix(in srgb, var(--accent) 85%, var(--text) 15%);
 }
 
 .btn--outlined {
@@ -136,7 +140,7 @@ section {
 
 .btn--outlined:hover {
   border-color: var(--text-muted);
-  background: color-mix(in srgb, var(--bg-soft) 55%, white 45%);
+  background: color-mix(in srgb, var(--bg-soft) 82%, var(--text) 18%);
 }
 
 project-card {
