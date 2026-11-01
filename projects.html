@@ -2,46 +2,200 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Projects - Mohammad Yousaf</title>
+    <meta
+      name="description"
+      content="AI, optimization, computer vision and infrastructure projects built by Mohammad Yousaf, plus every public GitHub repository."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Projects - Mohammad Yousaf" />
+    <meta
+      property="og:description"
+      content="AI, optimization, computer vision and infrastructure projects, plus public repositories."
+    />
+    <meta property="og:url" content="https://myousaf64.github.io/portfolio/projects.html" />
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch (e) {}
+      document.documentElement.classList.add("js");
+    </script>
     <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles/common.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles/projects.css" />
-    <title>Projects</title>
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/site.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header>
-      <nav aria-label="Primary navigation">
-        <ul>
-          <li class="overline fade">
-            <a href="./index.html#home"> Home </a>
+
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="./index.html">MY</a>
+        <div class="nav">
+          <nav aria-label="Primary navigation">
+            <ul class="nav__links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./projects.html" aria-current="page">Projects</a></li>
+              <li><a href="./experience.html">Experience</a></li>
+            </ul>
+          </nav>
+          <button class="nav-trigger" type="button" id="nav-trigger" hidden
+                  aria-expanded="false" aria-controls="sidebar" aria-label="Open the site menu">
+            <span aria-hidden="true">☰</span>
+            <span>Menu</span>
+            <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>B</kbd>
+          </button>
+          <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+            <span class="theme-toggle__light" aria-hidden="true">&#9680;</span>
+            <span class="theme-toggle__dark" aria-hidden="true">&#9681;</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero container">
+        <h1 class="reveal">Projects</h1>
+        <p class="hero__role reveal">
+          Production systems first, then everything public on GitHub.
+        </p>
+      </section>
+
+      <section class="section container">
+        <div class="section__head">
+          <p class="eyebrow">Production and client work</p>
+          <h2>Delivered systems</h2>
+        </div>
+        <ul class="grid grid--2">
+          <li class="card reveal">
+            <h3>EMX Network Twin</h3>
+            <p class="card__desc">
+              Logistics decision platform: an end-to-end digital twin for 3 UAE delivery networks
+              and 22 facilities, combining backend services, optimization and AI-assisted workflows.
+            </p>
+            <ul class="card__metrics">
+              <li>OR-Tools CP-SAT optimization under weekly cost and SLA constraints</li>
+              <li>SimPy and Monte Carlo simulation, 50 replications, SQLite-backed audit records</li>
+              <li>Human-reviewed LLM interface turning plain language into structured scenarios</li>
+            </ul>
+            <ul class="tags">
+              <li class="tag">Python</li>
+              <li class="tag">FastAPI</li>
+              <li class="tag">OR-Tools</li>
+              <li class="tag">SimPy</li>
+              <li class="tag">React</li>
+              <li class="tag">TypeScript</li>
+            </ul>
+            <p class="card__note">Aug 2026 &middot; private repository</p>
           </li>
-          <li class="overline fade">
-            <a href="./index.html#projects"> Projects </a>
+
+          <li class="card reveal">
+            <h3>FEDROS OMNI</h3>
+            <p class="card__desc">
+              Self-improving agentic AI platform with evaluation pipelines and application-level
+              observability.
+            </p>
+            <ul class="card__metrics">
+              <li>35% higher benchmark task success across 50+ tasks</li>
+              <li>28% lower hallucination rate through iterative evaluation and tool-use refinement</li>
+              <li>Real-time multi-agent tracing, Arabic and RTL support, KPI dashboards from 1,050+ interactions across 276 customers</li>
+              <li>5,000+ autonomous agent iterations on an NVIDIA A100, ~40% lower experiment cost</li>
+            </ul>
+            <ul class="tags">
+              <li class="tag">LangGraph</li>
+              <li class="tag">LangChain</li>
+              <li class="tag">FAISS</li>
+              <li class="tag">Local LLMs</li>
+            </ul>
+            <p class="card__note">Jun 2026 &middot; private repository</p>
           </li>
-          <li class="overline fade">
-            <a href="./index.html#about"> About </a>
+
+          <li class="card reveal">
+            <h3>Containerized Full-Stack Platform</h3>
+            <p class="card__desc">
+              Containerized full-stack environment with SSL, RBAC, Nginx, automated CI/CD and
+              Kubernetes orchestration.
+            </p>
+            <ul class="card__metrics">
+              <li>Real-time multiplayer backend scaled to 100+ concurrent users</li>
+              <li>Maintained above 99.9% uptime</li>
+            </ul>
+            <ul class="tags">
+              <li class="tag">Docker</li>
+              <li class="tag">Kubernetes</li>
+              <li class="tag">Nginx</li>
+              <li class="tag">CI/CD</li>
+            </ul>
+            <p class="card__note">Sep 2025 &middot; private repository</p>
+          </li>
+
+          <li class="card reveal">
+            <h3>Employee Identity Recognition</h3>
+            <p class="card__desc">
+              End-to-end computer vision pipeline for employee identification, tuned for real-world
+              lighting and occlusion.
+            </p>
+            <ul class="card__metrics">
+              <li>94%+ macro accuracy across 50+ identities</li>
+              <li>30% lower false acceptance rate after ArcFace embedding threshold tuning</li>
+            </ul>
+            <ul class="tags">
+              <li class="tag">Python</li>
+              <li class="tag">OpenCV</li>
+              <li class="tag">FaceNet</li>
+              <li class="tag">ArcFace</li>
+            </ul>
+            <p class="card__note">Jun 2025 &middot; private repository</p>
+          </li>
+
+          <li class="card reveal">
+            <h3>Passport Photo Compliance Automation</h3>
+            <p class="card__desc">
+              CNN-based compliance classifier checking passport photographs against five ICAO
+              criteria.
+            </p>
+            <ul class="card__metrics">
+              <li>96% F1-score on held-out test data</li>
+              <li>Automated inference workflows cut estimated manual review workload by about 80%</li>
+            </ul>
+            <ul class="tags">
+              <li class="tag">TensorFlow</li>
+              <li class="tag">Computer Vision</li>
+            </ul>
+            <p class="card__note">Apr 2025 &middot; private repository</p>
           </li>
         </ul>
-      </nav>
-    </header>
-    <main id="main">
-    <section class="projects">
-      <h1 class="fade title">My Projects</h1>
-      <p class="fade para">These are the projects that I have done.</p>
-      <div class="projectsWrapper"></div>
-    </section>
+      </section>
+
+      <section class="section container">
+        <div class="section__head">
+          <p class="eyebrow">Open source</p>
+          <h2>Public repositories</h2>
+          <p class="prose">Pulled live from GitHub, most recently updated first.</p>
+        </div>
+        <ul class="grid grid--3" data-repos>
+          <li class="empty-state">Loading public repositories from GitHub&hellip;</li>
+        </ul>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p>Mohammad Yousaf &middot; Abu Dhabi, UAE</p>
+        <p><a href="./assets/CV.pdf" download>Download CV</a></p>
+      </div>
+    </footer>
+
+    <script src="./scripts/main.js" type="module"></script>
+    <script src="./scripts/sidebar.js" type="module"></script>
+    <script src="./scripts/github.js" type="module"></script>
   </body>
-  <script src="./scripts/projects.js" type="module"></script>
 </html>
