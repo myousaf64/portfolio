@@ -139,7 +139,9 @@ function countUp(el) {
   const start = performance.now();
 
   function frame(now) {
-    const t = Math.min((now - start) / duration, 1);
+    // The rAF timestamp can predate start, which makes t negative and prints
+    // "-0,000+" on the first frame. Clamp both ends.
+    const t = Math.min(Math.max((now - start) / duration, 0), 1);
     const eased = 1 - Math.pow(1 - t, 3); // matches --ease-out closely enough
     const current = (parts.value * eased).toFixed(parts.decimals);
     el.textContent = `${parts.prefix}${current}${parts.suffix}`;
