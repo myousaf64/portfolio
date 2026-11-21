@@ -64,34 +64,64 @@
     <main id="main">
       <section class="hero container">
         <h1 class="reveal">Mohammad Yousaf</h1>
-        <p class="hero__role reveal">
+        <p class="hero__role reveal" data-role-tagline>
           Forward Deployed Engineer. AI systems, full-stack, cloud and infrastructure.
         </p>
         <p class="hero__meta reveal">Abu Dhabi, UAE</p>
+        <p class="availability reveal">Open to full-time roles in the UAE, available now.</p>
         <div class="btn-row reveal">
-          <a class="btn btn--primary" href="./assets/CV.pdf" download>Download CV</a>
+          <a class="btn btn--primary" href="mailto:64yousaf@gmail.com">Email me</a>
+          <a class="btn btn--outlined" href="./assets/CV-fde.pdf" data-cv download>Download CV</a>
           <a class="btn btn--outlined" href="#work">See my work</a>
         </div>
+        <nav class="role-switch reveal" aria-label="Choose a role view">
+          <ul>
+            <li><a href="?role=fde" aria-current="true">Forward deployed</a></li>
+            <li><a href="?role=ai">AI engineering</a></li>
+            <li><a href="?role=mlops">MLOps</a></li>
+            <li><a href="?role=freelance">Freelance</a></li>
+          </ul>
+        </nav>
       </section>
 
       <section class="section container" aria-label="Selected results">
         <ul class="metrics reveal">
           <li class="metric">
-            <p class="metric__value">10K+</p>
-            <p class="metric__label">industrial data points processed per session</p>
+            <a href="./projects.html#emx-network-twin">
+              <p class="metric__value">10K+</p>
+              <p class="metric__label">industrial data points processed per session</p>
+            </a>
           </li>
           <li class="metric">
-            <p class="metric__value">&lt;200 ms</p>
-            <p class="metric__label">inference latency on real-time pipelines</p>
+            <a href="./projects.html#emx-network-twin">
+              <p class="metric__value">&lt;200 ms</p>
+              <p class="metric__label">inference latency on real-time pipelines</p>
+            </a>
           </li>
           <li class="metric">
-            <p class="metric__value">94%+</p>
-            <p class="metric__label">macro accuracy across 50+ identities</p>
+            <a href="./projects.html#employee-identity">
+              <p class="metric__value">94%+</p>
+              <p class="metric__label">macro accuracy across 50+ identities</p>
+            </a>
           </li>
           <li class="metric">
-            <p class="metric__value">&gt;99.9%</p>
-            <p class="metric__label">uptime on a containerized platform</p>
+            <a href="./projects.html#containerized-platform">
+              <p class="metric__value">&gt;99.9%</p>
+              <p class="metric__label">uptime on a containerized platform</p>
+            </a>
           </li>
+        </ul>
+      </section>
+
+      <section class="section container" aria-label="Organisations I have worked with">
+        <p class="eyebrow">Worked with</p>
+        <ul class="worked-with reveal">
+          <li>TAQA</li>
+          <li>Malem Al Sharq</li>
+          <li>ADNOC</li>
+          <li>Ministry of Defence / 42 Abu Dhabi</li>
+          <li>Khalifa Fund (MZN Hub)</li>
+          <li>ADNOC / ADEK</li>
         </ul>
       </section>
 
@@ -101,17 +131,24 @@
           <h2>Systems I built and shipped</h2>
         </div>
         <ul class="grid grid--2">
-          <li class="card reveal">
-            <h3>EMX Network Twin</h3>
+          <li class="card card--link reveal">
+            <h3><a href="./projects.html#emx-network-twin">EMX Network Twin</a></h3>
             <p class="card__desc">
               Logistics decision platform: an end-to-end digital twin for 3 UAE delivery networks
               and 22 facilities, combining backend services, optimization and AI-assisted workflows.
             </p>
-            <ul class="card__metrics">
-              <li>OR-Tools CP-SAT optimization for fleet, staffing, zones and facilities</li>
-              <li>SimPy and Monte Carlo simulation, 50 replications with confidence intervals</li>
-              <li>Human-reviewed LLM interface turning plain language into structured scenarios</li>
-            </ul>
+            <dl class="case">
+              <dt>Problem</dt>
+              <dd>
+                Plan fleet, staffing, zones and facilities across 3 UAE delivery networks and 22
+                facilities under weekly cost and SLA constraints.
+              </dd>
+              <dt>Result</dt>
+              <dd>
+                An auditable twin covering capacity, utilization, cost and service coverage, with
+                OR-Tools CP-SAT optimization and SQLite-backed audit records.
+              </dd>
+            </dl>
             <ul class="tags">
               <li class="tag">Python</li>
               <li class="tag">FastAPI</li>
@@ -123,17 +160,23 @@
             <p class="card__note">Aug 2026 &middot; private repository</p>
           </li>
 
-          <li class="card reveal">
-            <h3>FEDROS OMNI</h3>
+          <li class="card card--link reveal">
+            <h3><a href="./projects.html#fedros-omni">FEDROS OMNI</a></h3>
             <p class="card__desc">
               Self-improving agentic AI platform with evaluation pipelines and application-level
               observability.
             </p>
-            <ul class="card__metrics">
-              <li>35% higher benchmark task success across 50+ tasks</li>
-              <li>28% lower hallucination rate through iterative evaluation and tool-use refinement</li>
-              <li>5,000+ autonomous agent iterations on an NVIDIA A100, ~40% lower experiment cost</li>
-            </ul>
+            <dl class="case">
+              <dt>Problem</dt>
+              <dd>
+                Raise agent task success and cut the hallucination rate across 50+ benchmark tasks.
+              </dd>
+              <dt>Result</dt>
+              <dd>
+                35% higher task success, 28% lower hallucination rate, and about 40% lower
+                experiment cost over 5,000+ iterations on an NVIDIA A100.
+              </dd>
+            </dl>
             <ul class="tags">
               <li class="tag">LangGraph</li>
               <li class="tag">LangChain</li>
@@ -143,16 +186,21 @@
             <p class="card__note">Jun 2026 &middot; private repository</p>
           </li>
 
-          <li class="card reveal">
-            <h3>Containerized Full-Stack Platform</h3>
+          <li class="card card--link reveal">
+            <h3><a href="./projects.html#containerized-platform">Containerized Full-Stack Platform</a></h3>
             <p class="card__desc">
               Containerized full-stack environment with SSL, RBAC, Nginx, automated CI/CD and
               Kubernetes orchestration.
             </p>
-            <ul class="card__metrics">
-              <li>Real-time multiplayer backend scaled to 100+ concurrent users</li>
-              <li>Maintained above 99.9% uptime</li>
-            </ul>
+            <dl class="case">
+              <dt>Problem</dt>
+              <dd>
+                Run a real-time multiplayer backend for 100+ concurrent users with SSL, RBAC and
+                automated deploys.
+              </dd>
+              <dt>Result</dt>
+              <dd>Above 99.9% uptime, with no reported downtime incident.</dd>
+            </dl>
             <ul class="tags">
               <li class="tag">Docker</li>
               <li class="tag">Kubernetes</li>
@@ -162,16 +210,23 @@
             <p class="card__note">Sep 2025 &middot; private repository</p>
           </li>
 
-          <li class="card reveal">
-            <h3>Employee Identity Recognition</h3>
+          <li class="card card--link reveal">
+            <h3><a href="./projects.html#employee-identity">Employee Identity Recognition</a></h3>
             <p class="card__desc">
               End-to-end computer vision pipeline for employee identification, tuned for real-world
               lighting and occlusion.
             </p>
-            <ul class="card__metrics">
-              <li>94%+ macro accuracy across 50+ identities</li>
-              <li>30% lower false acceptance rate after ArcFace embedding threshold tuning</li>
-            </ul>
+            <dl class="case">
+              <dt>Problem</dt>
+              <dd>
+                Identify 50+ employees from CCTV frames under real-world lighting and occlusion.
+              </dd>
+              <dt>Result</dt>
+              <dd>
+                94%+ macro accuracy, and a 30% lower false acceptance rate after ArcFace embedding
+                threshold tuning.
+              </dd>
+            </dl>
             <ul class="tags">
               <li class="tag">Python</li>
               <li class="tag">OpenCV</li>
@@ -203,20 +258,25 @@
       <section class="section container" id="about">
         <div class="section__head">
           <p class="eyebrow">About</p>
-          <h2>Translating operations into working software</h2>
+          <h2>Sitting with the people who use the system</h2>
         </div>
         <p class="prose">
-          I am a Forward Deployed Engineer with hands-on experience building and deploying
-          AI-powered, full-stack and infrastructure systems for enterprise and government-related
-          environments in the UAE. I turn operational requirements into working software, from AI
-          assistants and optimization systems to real-time APIs, digital twins, secure container
-          environments and user-facing applications.
+          At TAQA, from October to November 2026, I was embedded with business teams instead of an
+          engineering team. The people I worked with were not developers. They did know exactly
+          which documents slowed their week down.
         </p>
         <p class="prose">
-          I have delivered enterprise AI features in short development cycles and deployed
-          solutions across Linux, Docker, Kubernetes, FastAPI, React and cloud-oriented
-          environments. I study for a BSc in Software Development and AI Applications at 42 Abu
-          Dhabi, where I also sit on the AI/ML club board.
+          So they built the assistants, and I taught them how. We put RAG knowledge assistants over
+          their own SharePoint content with Copilot Studio and Azure AI Foundry, then
+          document-processing and workflow agents with Power Automate and Power Apps. I advised on
+          data ingestion, Azure deployment and Microsoft Teams integration, so the prototypes left
+          the demo and reached daily use.
+        </p>
+        <p class="prose">
+          That is the work I want. A system an engineer admires and nobody opens has failed. The
+          part I am good at is sitting with the people who will use a thing, then handing it over so
+          they can keep changing it without me. I study for a BSc in Software Development and AI
+          Applications at 42 Abu Dhabi, where I also sit on the AI/ML club board.
         </p>
         <p class="btn-row" style="margin-top: var(--space-8)">
           <a class="btn btn--outlined" href="./experience.html">Full experience</a>
@@ -227,15 +287,12 @@
         <div class="section__head">
           <p class="eyebrow">Contact</p>
           <h2>Get in touch</h2>
+          <p class="availability">Open to full-time roles in the UAE, available now.</p>
         </div>
         <ul class="contact-list">
           <li>
             <p class="eyebrow">Email</p>
             <a href="mailto:64yousaf@gmail.com">64yousaf@gmail.com</a>
-          </li>
-          <li>
-            <p class="eyebrow">Phone</p>
-            <a href="tel:+971569294753">+971 56 929 4753</a>
           </li>
           <li>
             <p class="eyebrow">LinkedIn</p>
@@ -252,7 +309,7 @@
     <footer class="site-footer">
       <div class="container site-footer__inner">
         <p>Mohammad Yousaf &middot; Abu Dhabi, UAE</p>
-        <p><a href="./assets/CV.pdf" download>Download CV</a></p>
+        <p><a href="./assets/CV-fde.pdf" data-cv download>Download CV</a></p>
       </div>
     </footer>
 

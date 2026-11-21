@@ -5,8 +5,26 @@ import { revealIn } from "./main.js";
 const USER = "myousaf64";
 const API = `https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`;
 const PROFILE = `https://github.com/${USER}`;
-const CACHE_KEY = "repos:" + USER;
+const CACHE_KEY = "repos:" + USER + ":v2"; // v2: the filter below changed the cached shape
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour. The API allows 60 unauthenticated calls per hour per IP.
+
+// Repository filter. FEATURED names come first and ignore HIDE_TOPICS, because
+// a repository can carry a stale topic on GitHub.
+const HIDE = new Set(["myousaf64"]); // the GitHub profile configuration repository
+const HIDE_TOPICS = new Set(["placeholder", "config", "github-config"]);
+const FEATURED = ["Learn2Slither", "Leaffliction-V2"];
+
+function featureRank(name) {
+  const i = FEATURED.indexOf(name);
+  return i === -1 ? FEATURED.length : i;
+}
+
+function keep(repo) {
+  if (repo.fork || repo.archived) return false;
+  if (FEATURED.includes(repo.name)) return true;
+  if (HIDE.has(repo.name)) return false;
+  return !(repo.topics || []).some((topic) => HIDE_TOPICS.has(topic));
+}
 
 function readCache() {
   try {
@@ -36,7 +54,7 @@ async function loadRepos() {
   if (!response.ok) throw new Error(`GitHub API responded ${response.status}`);
 
   const repos = (await response.json())
-    .filter((repo) => !repo.fork && !repo.archived)
+    .filter(keep)
     .map((repo) => ({
       name: repo.name,
       description: repo.description,
@@ -45,6 +63,9 @@ async function loadRepos() {
       topics: repo.topics || [],
       stars: repo.stargazers_count,
     }));
+
+  // sort() is stable, so the API order (sort=updated) holds inside each rank.
+  repos.sort((a, b) => featureRank(a.name) - featureRank(b.name));
 
   writeCache(repos);
   return repos;
