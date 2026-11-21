@@ -75,17 +75,51 @@
           <h2>Delivered systems</h2>
         </div>
         <ul class="grid grid--2">
-          <li class="card reveal">
+          <li class="card reveal" id="emx-network-twin">
             <h3>EMX Network Twin</h3>
             <p class="card__desc">
               Logistics decision platform: an end-to-end digital twin for 3 UAE delivery networks
               and 22 facilities, combining backend services, optimization and AI-assisted workflows.
             </p>
-            <ul class="card__metrics">
-              <li>OR-Tools CP-SAT optimization under weekly cost and SLA constraints</li>
-              <li>SimPy and Monte Carlo simulation, 50 replications, SQLite-backed audit records</li>
-              <li>Human-reviewed LLM interface turning plain language into structured scenarios</li>
-            </ul>
+            <figure class="card__media card__media--empty">
+              <span>Screenshot to come</span>
+              <!-- Replace this whole <figure> with:
+              <figure class="card__media">
+                <video controls muted playsinline preload="none"
+                       poster="./assets/work/emx-network-twin.webp" width="1600" height="900">
+                  <source src="./assets/work/emx-network-twin.mp4" type="video/mp4" />
+                  <img src="./assets/work/emx-network-twin.webp" alt="DESCRIBE THE SCREENSHOT"
+                       width="1600" height="900" loading="lazy" />
+                </video>
+              </figure>
+              -->
+            </figure>
+            <dl class="case">
+              <dt>Context</dt>
+              <dd>Private project, August 2026. 3 UAE delivery networks and 22 facilities.</dd>
+              <dt>My role</dt>
+              <dd>
+                Backend services, the optimization and simulation engines, and the user-facing
+                application.
+              </dd>
+              <dt>Problem</dt>
+              <dd>
+                Plan fleet, staffing, zones and facilities across those networks under weekly cost
+                and SLA constraints.
+              </dd>
+              <dt>Approach</dt>
+              <dd>
+                OR-Tools CP-SAT for the allocation. Seeded SimPy and Monte Carlo runs, 50
+                replications with confidence intervals and baseline comparisons. A human-reviewed
+                LLM interface turns a plain-language request into a structured scenario, and
+                deterministic engines calculate the KPIs.
+              </dd>
+              <dt>Result</dt>
+              <dd>
+                An auditable twin covering capacity, utilization, cost and service coverage, with
+                SQLite-backed audit records behind every run.
+              </dd>
+            </dl>
             <ul class="tags">
               <li class="tag">Python</li>
               <li class="tag">FastAPI</li>
@@ -97,18 +131,47 @@
             <p class="card__note">Aug 2026 &middot; private repository</p>
           </li>
 
-          <li class="card reveal">
+          <li class="card reveal" id="fedros-omni">
             <h3>FEDROS OMNI</h3>
             <p class="card__desc">
               Self-improving agentic AI platform with evaluation pipelines and application-level
               observability.
             </p>
-            <ul class="card__metrics">
-              <li>35% higher benchmark task success across 50+ tasks</li>
-              <li>28% lower hallucination rate through iterative evaluation and tool-use refinement</li>
-              <li>Real-time multi-agent tracing, Arabic and RTL support, KPI dashboards from 1,050+ interactions across 276 customers</li>
-              <li>5,000+ autonomous agent iterations on an NVIDIA A100, ~40% lower experiment cost</li>
-            </ul>
+            <figure class="card__media card__media--empty">
+              <span>Screenshot to come</span>
+              <!-- Replace this whole <figure> with:
+              <figure class="card__media">
+                <video controls muted playsinline preload="none"
+                       poster="./assets/work/fedros-omni.webp" width="1600" height="900">
+                  <source src="./assets/work/fedros-omni.mp4" type="video/mp4" />
+                  <img src="./assets/work/fedros-omni.webp" alt="DESCRIBE THE SCREENSHOT"
+                       width="1600" height="900" loading="lazy" />
+                </video>
+              </figure>
+              -->
+            </figure>
+            <dl class="case">
+              <dt>Context</dt>
+              <dd>Private project, June 2026.</dd>
+              <dt>My role</dt>
+              <dd>The agent graph, the evaluation pipeline and the observability layer.</dd>
+              <dt>Problem</dt>
+              <dd>
+                Raise agent task success and cut the hallucination rate across 50+ benchmark tasks.
+              </dd>
+              <dt>Approach</dt>
+              <dd>
+                LangChain and LangGraph over local LLMs with FAISS retrieval. Automated evaluation
+                pipelines, real-time multi-agent tracing, Arabic and RTL support, and KPI dashboards
+                built from 1,050+ interactions across 276 customers.
+              </dd>
+              <dt>Result</dt>
+              <dd>
+                35% higher benchmark task success, 28% lower hallucination rate, about 40% lower
+                experiment cost and about 2x faster convergence over 5,000+ iterations on an
+                NVIDIA A100.
+              </dd>
+            </dl>
             <ul class="tags">
               <li class="tag">LangGraph</li>
               <li class="tag">LangChain</li>
@@ -118,16 +181,30 @@
             <p class="card__note">Jun 2026 &middot; private repository</p>
           </li>
 
-          <li class="card reveal">
+          <li class="card reveal" id="containerized-platform">
             <h3>Containerized Full-Stack Platform</h3>
             <p class="card__desc">
               Containerized full-stack environment with SSL, RBAC, Nginx, automated CI/CD and
               Kubernetes orchestration.
             </p>
-            <ul class="card__metrics">
-              <li>Real-time multiplayer backend scaled to 100+ concurrent users</li>
-              <li>Maintained above 99.9% uptime</li>
-            </ul>
+            <dl class="case">
+              <dt>Context</dt>
+              <dd>Private project, September 2025. A real-time multiplayer backend.</dd>
+              <dt>My role</dt>
+              <dd>Infrastructure, orchestration and deployment.</dd>
+              <dt>Problem</dt>
+              <dd>
+                Serve 100+ concurrent users on a real-time backend, with SSL, RBAC and deploys that
+                need no manual step.
+              </dd>
+              <dt>Approach</dt>
+              <dd>
+                Containers behind Nginx with SSL and RBAC, automated CI/CD, and Kubernetes
+                orchestration.
+              </dd>
+              <dt>Result</dt>
+              <dd>Above 99.9% uptime, with no reported downtime incident.</dd>
+            </dl>
             <ul class="tags">
               <li class="tag">Docker</li>
               <li class="tag">Kubernetes</li>
@@ -137,16 +214,32 @@
             <p class="card__note">Sep 2025 &middot; private repository</p>
           </li>
 
-          <li class="card reveal">
+          <li class="card reveal" id="employee-identity">
             <h3>Employee Identity Recognition</h3>
             <p class="card__desc">
               End-to-end computer vision pipeline for employee identification, tuned for real-world
               lighting and occlusion.
             </p>
-            <ul class="card__metrics">
-              <li>94%+ macro accuracy across 50+ identities</li>
-              <li>30% lower false acceptance rate after ArcFace embedding threshold tuning</li>
-            </ul>
+            <dl class="case">
+              <dt>Context</dt>
+              <dd>Private project, June 2025. Employee identification from CCTV.</dd>
+              <dt>My role</dt>
+              <dd>The whole pipeline, from frame handling to threshold tuning.</dd>
+              <dt>Problem</dt>
+              <dd>
+                Recognise 50+ employee identities from CCTV frames under real-world lighting and
+                occlusion.
+              </dd>
+              <dt>Approach</dt>
+              <dd>
+                OpenCV preprocessing, FaceNet and ArcFace embeddings, then tuning of the ArcFace
+                embedding threshold against the hard frames.
+              </dd>
+              <dt>Result</dt>
+              <dd>
+                94%+ macro accuracy, and a 30% lower false acceptance rate after that tuning.
+              </dd>
+            </dl>
             <ul class="tags">
               <li class="tag">Python</li>
               <li class="tag">OpenCV</li>
@@ -156,21 +249,84 @@
             <p class="card__note">Jun 2025 &middot; private repository</p>
           </li>
 
-          <li class="card reveal">
+          <li class="card reveal" id="passport-icao">
             <h3>Passport Photo Compliance Automation</h3>
             <p class="card__desc">
               CNN-based compliance classifier checking passport photographs against five ICAO
               criteria.
             </p>
-            <ul class="card__metrics">
-              <li>96% F1-score on held-out test data</li>
-              <li>Automated inference workflows cut estimated manual review workload by about 80%</li>
-            </ul>
+            <dl class="case">
+              <dt>Context</dt>
+              <dd>Private project, April 2025.</dd>
+              <dt>My role</dt>
+              <dd>The model, the training run and the inference workflow.</dd>
+              <dt>Problem</dt>
+              <dd>
+                Check a passport photograph against five ICAO criteria without a human reviewer on
+                every photo.
+              </dd>
+              <dt>Approach</dt>
+              <dd>A CNN classifier in TensorFlow across the five criteria, scored on held-out data.</dd>
+              <dt>Result</dt>
+              <dd>
+                96% F1-score on held-out test data. The automated inference workflow cut the
+                estimated manual review workload by about 80%.
+              </dd>
+            </dl>
             <ul class="tags">
               <li class="tag">TensorFlow</li>
               <li class="tag">Computer Vision</li>
             </ul>
             <p class="card__note">Apr 2025 &middot; private repository</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section container">
+        <div class="section__head">
+          <p class="eyebrow">Featured open source</p>
+          <h2>Leaf disease classification</h2>
+        </div>
+        <ul class="grid">
+          <li class="card reveal" id="leaffliction-v2">
+            <h3><a href="https://github.com/myousaf64/Leaffliction-V2">Leaffliction-V2</a></h3>
+            <p class="card__desc">
+              Leaf disease image classification: dataset analysis, augmentation, transformation and
+              a classifier.
+            </p>
+            <figure class="card__media card__media--empty">
+              <span>Screenshot to come</span>
+              <!-- Replace this whole <figure> with:
+              <figure class="card__media">
+                <video controls muted playsinline preload="none"
+                       poster="./assets/work/leaffliction-v2.webp" width="1600" height="900">
+                  <source src="./assets/work/leaffliction-v2.mp4" type="video/mp4" />
+                  <img src="./assets/work/leaffliction-v2.webp" alt="DESCRIBE THE SCREENSHOT"
+                       width="1600" height="900" loading="lazy" />
+                </video>
+              </figure>
+              -->
+            </figure>
+            <!-- PLACEHOLDER. No CV mentions this project, so only the GitHub
+                 description above is sourced. Replace the four marked lines with
+                 the real context, role, problem and result. -->
+            <dl class="case">
+              <dt>Context</dt>
+              <dd><em class="placeholder">Placeholder: not written yet.</em></dd>
+              <dt>My role</dt>
+              <dd><em class="placeholder">Placeholder: not written yet.</em></dd>
+              <dt>Problem</dt>
+              <dd><em class="placeholder">Placeholder: not written yet.</em></dd>
+              <dt>Approach</dt>
+              <dd>Dataset analysis, augmentation and transformation, then a classifier.</dd>
+              <dt>Result</dt>
+              <dd><em class="placeholder">Placeholder: not written yet.</em></dd>
+            </dl>
+            <ul class="tags">
+              <li class="tag">Python</li>
+              <li class="tag">Computer Vision</li>
+            </ul>
+            <p class="card__note">Public repository</p>
           </li>
         </ul>
       </section>
