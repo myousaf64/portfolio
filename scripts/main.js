@@ -1,4 +1,5 @@
-// main.js - theme, reveal, scroll progress and metric count-up. Loaded by every page.
+// main.js - theme, role variant, reveal, scroll progress and metric count-up.
+// Loaded by every page, and loaded first.
 
 const root = document.documentElement;
 
@@ -49,6 +50,103 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (ev
   if (storedTheme()) return;
   root.dataset.theme = event.matches ? "dark" : "light";
 });
+
+/* ---------- role variant ---------- */
+
+// The HTML holds the fde variant in full. This block only overwrites text and
+// link targets, so a reader with no JavaScript still sees a complete page.
+// Every value below comes from a CV in assets/. Add no number that a CV does
+// not state.
+
+const METRICS_FDE = [
+  ["10K+", "industrial data points processed per session", "emx-network-twin"],
+  ["<200 ms", "inference latency on real-time pipelines", "emx-network-twin"],
+  ["94%+", "macro accuracy across 50+ identities", "employee-identity"],
+  [">99.9%", "uptime on a containerized platform", "containerized-platform"],
+];
+
+const METRICS_AI = [
+  ["5,000+", "autonomous agent iterations on an NVIDIA A100", "fedros-omni"],
+  ["28%", "lower hallucination rate after evaluation and tool-use refinement", "fedros-omni"],
+  ["96%", "F1-score on held-out ICAO compliance data", "passport-icao"],
+  ["94%+", "macro accuracy across 50+ identities", "employee-identity"],
+];
+
+// order maps to the DOM order of the #work cards:
+// 0 EMX, 1 FEDROS OMNI, 2 Containerized platform, 3 Employee identity.
+const ROLES = {
+  fde: {
+    tagline: "Forward Deployed Engineer. AI systems, full-stack, cloud and infrastructure.",
+    cv: "CV-fde.pdf",
+    metrics: METRICS_FDE,
+    order: [0, 1, 2, 3],
+  },
+  ai: {
+    tagline: "AI/ML Engineer. LLM and agentic AI, computer vision and MLOps.",
+    cv: "CV-ai.pdf",
+    metrics: METRICS_AI,
+    order: [1, 0, 3, 2],
+  },
+  // No CV states an MLOps metric, so this role reuses the AI set.
+  mlops: {
+    tagline:
+      "MLOps and evaluation pipelines. Model monitoring with MLflow, Weights & Biases, Kubeflow and Airflow.",
+    cv: "CV-ai.pdf",
+    metrics: METRICS_AI,
+    order: [2, 0, 1, 3],
+  },
+  freelance: {
+    tagline:
+      "Contract engineer in Abu Dhabi. AI systems, full-stack delivery and secure infrastructure.",
+    cv: "CV-fde.pdf",
+    metrics: METRICS_FDE,
+    order: [0, 2, 1, 3],
+  },
+};
+
+const DEFAULT_ROLE = "fde";
+
+function activeRole() {
+  const name = new URLSearchParams(location.search).get("role");
+  return name && Object.hasOwn(ROLES, name) ? name : DEFAULT_ROLE;
+}
+
+function applyRole(name) {
+  const role = ROLES[name];
+  root.dataset.role = name;
+
+  // Only index.html carries this attribute. The other pages keep their own line.
+  const tagline = document.querySelector("[data-role-tagline]");
+  if (tagline) tagline.textContent = role.tagline;
+
+  document.querySelectorAll("[data-cv]").forEach((link) => {
+    link.href = `./assets/${role.cv}`;
+  });
+
+  document.querySelectorAll(".role-switch a").forEach((link) => {
+    const target = new URL(link.href, location.href).searchParams.get("role") || DEFAULT_ROLE;
+    if (target === name) link.setAttribute("aria-current", "true");
+    else link.removeAttribute("aria-current");
+  });
+
+  document.querySelectorAll(".metric").forEach((tile, i) => {
+    const entry = role.metrics[i];
+    if (!entry) return;
+    const [value, label, target] = entry;
+    tile.querySelector(".metric__value").textContent = value;
+    tile.querySelector(".metric__label").textContent = label;
+    const link = tile.querySelector("a");
+    if (link) link.href = `./projects.html#${target}`;
+  });
+
+  document.querySelectorAll("#work .card").forEach((card, i) => {
+    card.style.order = role.order[i] ?? i;
+  });
+}
+
+// Runs before revealIn() and before the count-up observer, so the count-up
+// reads the number of the active role.
+applyRole(activeRole());
 
 /* ---------- reveal ---------- */
 
