@@ -414,10 +414,58 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
   margin-top: var(--space-4);
 }
 
-.worked-with li {
+/* Monochrome badges, one row height whatever the badge holds. A mask paints the
+   artwork in currentColor, so one rule covers both themes and any source SVG. */
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 28px;
   font-family: var(--font-mono);
   font-size: var(--step--1);
-  color: var(--text);
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  filter: grayscale(1);
+  transition: color var(--dur-2) var(--ease-out);
+}
+
+.logo-badge:hover { color: var(--text); }
+
+.logo-badge__mark {
+  display: block;
+  height: 22px;
+  background: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* One width per logo, from its own viewBox, so nothing is stretched. */
+.logo-badge__mark--adnoc {
+  width: 26px; /* symbol only, 76 x 64 */
+  -webkit-mask-image: url("../assets/logos/adnoc.svg");
+  mask-image: url("../assets/logos/adnoc.svg");
+}
+
+.logo-badge__mark--42 {
+  width: 22px; /* 960 x 960 */
+  -webkit-mask-image: url("../assets/logos/42.svg");
+  mask-image: url("../assets/logos/42.svg");
+}
+
+/* The name behind a logo badge, for assistive tech and for images-off reading. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ---------- metrics ---------- */

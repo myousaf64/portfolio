@@ -139,13 +139,22 @@
 
       <section class="section container" aria-label="Organisations I have worked with">
         <p class="eyebrow">Worked with</p>
+        <!-- Monochrome badges. A logo file exists for ADNOC and 42 only; the rest are
+             wordmarks. Each badge carries the organisation name for assistive tech. -->
         <ul class="worked-with reveal">
-          <li>TAQA</li>
-          <li>Malem Al Sharq</li>
-          <li>ADNOC</li>
-          <li>Ministry of Defence / 42 Abu Dhabi</li>
-          <li>Khalifa Fund (MZN Hub)</li>
-          <li>ADNOC / ADEK</li>
+          <li class="logo-badge">TAQA</li>
+          <li class="logo-badge">Malem Al Sharq</li>
+          <li class="logo-badge">
+            <span class="logo-badge__mark logo-badge__mark--adnoc" aria-hidden="true"></span>
+            <span class="visually-hidden">ADNOC</span>
+          </li>
+          <li class="logo-badge">
+            Ministry of Defence /
+            <span class="logo-badge__mark logo-badge__mark--42" aria-hidden="true"></span>
+            <span class="visually-hidden">42</span> Abu Dhabi
+          </li>
+          <li class="logo-badge">Khalifa Fund (MZN Hub)</li>
+          <li class="logo-badge">ADNOC / ADEK</li>
         </ul>
       </section>
 
