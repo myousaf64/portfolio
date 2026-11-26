@@ -58,6 +58,61 @@ kbd {
   text-decoration: none;
 }
 
+/* ---------- background canvas and custom cursor ---------- */
+
+/* fx.js inserts this canvas. With no JavaScript the element never exists. */
+#bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(900px circle at 18% -10%, var(--fx-bloom), transparent 70%);
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  pointer-events: none;
+  border-radius: 50%;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+
+.cursor-dot { width: 10px; height: 10px; background: var(--accent); }
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin-top: -17px;
+  margin-left: -17px;
+  border: 1px solid var(--line-strong);
+  transition: width var(--dur-2) var(--ease-out), height var(--dur-2) var(--ease-out),
+    margin var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out),
+    background-color var(--dur-2) var(--ease-out);
+}
+
+.cursor-ring.is-big {
+  width: 52px;
+  height: 52px;
+  margin-top: -26px;
+  margin-left: -26px;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* Only once fx.js has the replacement in the document. */
+:root.has-cursor,
+:root.has-cursor a,
+:root.has-cursor button,
+:root.has-cursor [role="button"] { cursor: none; }
+
+/* A text field still needs its own cursor to be usable. */
+:root.has-cursor input,
+:root.has-cursor textarea { cursor: text; }
+
 /* ---------- layout ---------- */
 
 .container {
@@ -228,6 +283,8 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
     border-color var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
 }
 
+/* Magnetic hover. --tx/--ty come from fx.js; translate composes with the transform above. */
+.btn { translate: var(--tx, 0) var(--ty, 0); transition: translate var(--dur-1) var(--ease-out); }
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(1px); }
 .btn .arrow { transition: transform var(--dur-2) var(--ease-spring); }
@@ -280,7 +337,7 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
   aspect-ratio: 1;
   border: 1px dashed var(--line-strong);
   border-radius: var(--radius-lg);
-  background: var(--panel);
+  background: var(--bg-soft);
   overflow: hidden;
 }
 
@@ -422,7 +479,12 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
 
 .card { scroll-margin-top: calc(var(--header-h) + var(--space-8)); }
 .card:target { border-color: var(--accent); box-shadow: var(--shadow-lift); }
-.card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift); }
+/* Tilt. --rx/--ry come from fx.js and stay at 0 when nothing sets them. */
+.card:hover {
+  transform: translateY(-2px) perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lift);
+}
 .card:hover::before { opacity: 1; }
 .card > * { position: relative; }
 
@@ -723,5 +785,7 @@ main { view-transition-name: page-content; }
   }
   .js .reveal { opacity: 1; transform: none; }
   .btn:hover, .card:hover { transform: none; }
+  .btn { translate: none; }
+  .cursor-dot, .cursor-ring { display: none; }
   @view-transition { navigation: none; }
 }
