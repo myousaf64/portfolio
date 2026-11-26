@@ -16,6 +16,18 @@
       content="AI systems, full-stack and cloud infrastructure. Abu Dhabi, UAE."
     />
     <meta property="og:url" content="https://myousaf64.github.io/portfolio/" />
+    <meta property="og:image" content="https://myousaf64.github.io/portfolio/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Mohammad Yousaf, Forward Deployed Engineer. AI systems that reach daily use."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mohammad Yousaf - Forward Deployed Engineer" />
+    <meta name="twitter:description" content="AI systems, full-stack and cloud infrastructure. Abu Dhabi, UAE." />
+    <meta name="twitter:image" content="https://myousaf64.github.io/portfolio/assets/og.png" />
+    <link rel="canonical" href="https://myousaf64.github.io/portfolio/" />
     <script>
       try {
         var t = localStorage.getItem("theme");
@@ -63,25 +75,37 @@
 
     <main id="main">
       <section class="hero container">
-        <h1 class="reveal">Mohammad Yousaf</h1>
-        <p class="hero__role reveal" data-role-tagline>
-          Forward Deployed Engineer. AI systems, full-stack, cloud and infrastructure.
-        </p>
-        <p class="hero__meta reveal">Abu Dhabi, UAE</p>
-        <p class="availability reveal">Open to full-time roles in the UAE, available now.</p>
-        <div class="btn-row reveal">
-          <a class="btn btn--primary" href="mailto:64yousaf@gmail.com">Email me</a>
-          <a class="btn btn--outlined" href="./assets/CV-fde.pdf" data-cv download>Download CV</a>
-          <a class="btn btn--outlined" href="#work">See my work</a>
+        <div class="hero__grid">
+          <div class="hero__text">
+            <h1 class="reveal">Mohammad Yousaf</h1>
+            <p class="hero__role reveal" data-role-tagline>
+              Forward Deployed Engineer. AI systems, full-stack, cloud and infrastructure.
+            </p>
+            <p class="hero__value reveal" data-role-value>
+              I sit with the people who will use the system, then hand it over so they can keep
+              changing it without me.
+            </p>
+            <p class="hero__meta reveal">Abu Dhabi, UAE</p>
+            <p class="availability reveal">Open to full-time roles in the UAE, available now.</p>
+            <div class="btn-row reveal">
+              <a class="btn btn--primary" href="mailto:64yousaf@gmail.com">Email me</a>
+              <a class="btn btn--outlined" href="./assets/CV-fde.pdf" data-cv download>Download CV</a>
+              <a class="btn btn--outlined" href="#work">See my work</a>
+            </div>
+            <nav class="role-switch reveal" aria-label="Choose a role view">
+              <ul>
+                <li><a href="?role=fde" aria-current="true">Forward deployed</a></li>
+                <li><a href="?role=ai">AI engineering</a></li>
+                <li><a href="?role=mlops">MLOps</a></li>
+                <li><a href="?role=freelance">Freelance</a></li>
+              </ul>
+            </nav>
+          </div>
+          <!-- Placeholder: swap the inner div for <img src="./assets/headshot.webp" alt="Mohammad Yousaf"> -->
+          <div class="hero__photo reveal" aria-hidden="true">
+            <span>Placeholder: headshot</span>
+          </div>
         </div>
-        <nav class="role-switch reveal" aria-label="Choose a role view">
-          <ul>
-            <li><a href="?role=fde" aria-current="true">Forward deployed</a></li>
-            <li><a href="?role=ai">AI engineering</a></li>
-            <li><a href="?role=mlops">MLOps</a></li>
-            <li><a href="?role=freelance">Freelance</a></li>
-          </ul>
-        </nav>
       </section>
 
       <section class="section container" aria-label="Selected results">
@@ -115,13 +139,22 @@
 
       <section class="section container" aria-label="Organisations I have worked with">
         <p class="eyebrow">Worked with</p>
+        <!-- Monochrome badges. A logo file exists for ADNOC and 42 only; the rest are
+             wordmarks. Each badge carries the organisation name for assistive tech. -->
         <ul class="worked-with reveal">
-          <li>TAQA</li>
-          <li>Malem Al Sharq</li>
-          <li>ADNOC</li>
-          <li>Ministry of Defence / 42 Abu Dhabi</li>
-          <li>Khalifa Fund (MZN Hub)</li>
-          <li>ADNOC / ADEK</li>
+          <li class="logo-badge">TAQA</li>
+          <li class="logo-badge">Malem Al Sharq</li>
+          <li class="logo-badge">
+            <span class="logo-badge__mark logo-badge__mark--adnoc" aria-hidden="true"></span>
+            <span class="visually-hidden">ADNOC</span>
+          </li>
+          <li class="logo-badge">
+            Ministry of Defence /
+            <span class="logo-badge__mark logo-badge__mark--42" aria-hidden="true"></span>
+            <span class="visually-hidden">42</span> Abu Dhabi
+          </li>
+          <li class="logo-badge">Khalifa Fund (MZN Hub)</li>
+          <li class="logo-badge">ADNOC / ADEK</li>
         </ul>
       </section>
 
@@ -314,6 +347,7 @@
     </footer>
 
     <script src="./scripts/main.js" type="module"></script>
+    <script src="./scripts/fx.js" type="module"></script>
     <script src="./scripts/sidebar.js" type="module"></script>
     <script src="./scripts/github.js" type="module"></script>
   </body>
