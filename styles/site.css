@@ -409,31 +409,34 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
 .worked-with {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3) var(--space-6);
+  gap: var(--space-3);
   list-style: none;
   margin-top: var(--space-4);
 }
 
-/* Monochrome badges, one row height whatever the badge holds. A mask paints the
-   artwork in currentColor, so one rule covers both themes and any source SVG. */
+/* Monochrome badges. A mask paints the artwork in currentColor, so one rule covers
+   both themes and any source file, vector or transparent bitmap. */
 .logo-badge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-height: 28px;
+  min-height: 34px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.04em;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  filter: grayscale(1);
-  transition: color var(--dur-2) var(--ease-out);
+  transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out);
 }
 
-.logo-badge:hover { color: var(--text); }
+.logo-badge:hover { color: var(--text); border-color: var(--line-strong); }
 
 .logo-badge__mark {
   display: block;
-  height: 22px;
+  flex: none;
   background: currentColor;
   -webkit-mask-position: center;
   mask-position: center;
@@ -443,17 +446,34 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
   mask-size: contain;
 }
 
-/* One width per logo, from its own viewBox, so nothing is stretched. */
+/* One size per logo, from its own viewBox, so nothing is stretched. */
+.logo-badge__mark--taqa {
+  width: 53px; /* 117 x 29 */
+  height: 13px;
+  -webkit-mask-image: url("../assets/logos/taqa.svg");
+  mask-image: url("../assets/logos/taqa.svg");
+}
+
 .logo-badge__mark--adnoc {
-  width: 26px; /* symbol only, 76 x 64 */
+  width: 21px; /* symbol only, 76 x 64 */
+  height: 18px;
   -webkit-mask-image: url("../assets/logos/adnoc.svg");
   mask-image: url("../assets/logos/adnoc.svg");
 }
 
 .logo-badge__mark--42 {
-  width: 22px; /* 960 x 960 */
+  width: 17px; /* 960 x 960 */
+  height: 17px;
   -webkit-mask-image: url("../assets/logos/42.svg");
   mask-image: url("../assets/logos/42.svg");
+}
+
+/* A transparent bitmap masks exactly like a vector: the mask reads alpha, not colour. */
+.logo-badge__mark--khalifa {
+  width: 105px; /* latin wordmark only, 1500 x 157 */
+  height: 11px;
+  -webkit-mask-image: url("../assets/logos/khalifa-fund.png");
+  mask-image: url("../assets/logos/khalifa-fund.png");
 }
 
 /* The name behind a logo badge, for assistive tech and for images-off reading. */
