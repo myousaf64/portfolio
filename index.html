@@ -75,6 +75,8 @@
 
     <main id="main">
       <section class="hero container">
+        <!-- Banner layers. Decoration only: aurora and grid live in site.css. -->
+        <div class="hero__bg" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="hero__grid">
           <div class="hero__text">
             <h1 class="reveal">Mohammad Yousaf</h1>
@@ -101,10 +103,12 @@
               </ul>
             </nav>
           </div>
-          <!-- Placeholder: swap the inner div for <img src="./assets/headshot.webp" alt="Mohammad Yousaf"> -->
+          <!-- TODO: headshot. Drop assets/headshot.webp in, then uncomment this and
+               swap the inner div for <img src="./assets/headshot.webp" alt="Mohammad Yousaf">.
           <div class="hero__photo reveal" aria-hidden="true">
             <span>Placeholder: headshot</span>
           </div>
+          -->
         </div>
       </section>
 
@@ -139,21 +143,29 @@
 
       <section class="section container" aria-label="Organisations I have worked with">
         <p class="eyebrow">Worked with</p>
-        <!-- Monochrome badges. A logo file exists for ADNOC and 42 only; the rest are
-             wordmarks. Each badge carries the organisation name for assistive tech. -->
+        <!-- Monochrome badges. A mask paints each logo in currentColor, so one rule
+             holds in both themes. TAQA and Khalifa Fund publish a wordmark, which reads
+             as the name; ADNOC and 42 publish a symbol, so those badges print the name
+             beside it. Malem Al Sharq and ADEK publish no usable artwork. -->
         <ul class="worked-with reveal">
-          <li class="logo-badge">TAQA</li>
+          <li class="logo-badge">
+            <span class="logo-badge__mark logo-badge__mark--taqa" aria-hidden="true"></span>
+            <span class="visually-hidden">TAQA</span>
+          </li>
           <li class="logo-badge">Malem Al Sharq</li>
           <li class="logo-badge">
             <span class="logo-badge__mark logo-badge__mark--adnoc" aria-hidden="true"></span>
-            <span class="visually-hidden">ADNOC</span>
+            ADNOC
           </li>
           <li class="logo-badge">
-            Ministry of Defence /
             <span class="logo-badge__mark logo-badge__mark--42" aria-hidden="true"></span>
-            <span class="visually-hidden">42</span> Abu Dhabi
+            Ministry of Defence / 42 Abu Dhabi
           </li>
-          <li class="logo-badge">Khalifa Fund (MZN Hub)</li>
+          <li class="logo-badge">
+            <span class="logo-badge__mark logo-badge__mark--khalifa" aria-hidden="true"></span>
+            <span class="visually-hidden">Khalifa Fund</span>
+            (MZN Hub)
+          </li>
           <li class="logo-badge">ADNOC / ADEK</li>
         </ul>
       </section>

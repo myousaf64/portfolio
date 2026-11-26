@@ -4,10 +4,14 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + var(--space-6)); }
+html { overflow-x: clip; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + var(--space-6)); }
 
 body {
   margin: 0;
+  /* The hero banner bleeds to 100vw, which is wider than the page when a vertical
+     scrollbar exists. clip trims it without creating a scroll container, so the
+     sticky header keeps working. */
+  overflow-x: clip;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
@@ -300,6 +304,95 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
 
 /* ---------- hero ---------- */
 
+/* ---------- hero banner ---------- */
+
+/* Four layers, back to front: the #bg canvas, the aurora, the grid, the text.
+   Every layer here is decoration and carries aria-hidden in the markup. */
+.hero { position: relative; isolation: isolate; }
+
+.hero__bg {
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--space-16) * -1);
+  bottom: 0;
+  /* Bleed past the container to the full viewport width. */
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  overflow: hidden;
+  pointer-events: none;
+  /* Dissolve into the flat page before the metrics strip. No hard edge. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+}
+
+/* Aurora. Soft colour stops, not filter: blur() - a blur on a box this size
+   repaints every frame and is the one thing here that would cost real time. */
+.hero__bg span {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  will-change: transform;
+  /* Hold the aurora off the text column. The grid keeps the left side; the colour
+     stays on the empty right, so hero text never loses contrast to a drifting blob. */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.22) 34%, #000 64%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.22) 34%, #000 64%);
+}
+
+.hero__bg span:nth-child(1) {
+  top: -22%;
+  left: 40%;
+  width: 46rem;
+  height: 46rem;
+  background: radial-gradient(closest-side, var(--banner-a), transparent 72%);
+  animation: aurora-a 28s var(--ease-out) infinite alternate;
+}
+
+.hero__bg span:nth-child(2) {
+  top: -8%;
+  left: 66%;
+  width: 38rem;
+  height: 38rem;
+  background: radial-gradient(closest-side, var(--banner-b), transparent 70%);
+  animation: aurora-b 36s var(--ease-out) infinite alternate;
+}
+
+.hero__bg span:nth-child(3) {
+  top: 36%;
+  left: 54%;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(closest-side, var(--banner-c), transparent 70%);
+  animation: aurora-c 44s var(--ease-out) infinite alternate;
+}
+
+@keyframes aurora-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-7%, 6%, 0) scale(1.18); }
+}
+
+@keyframes aurora-b {
+  from { transform: translate3d(0, 0, 0) scale(1.1); }
+  to   { transform: translate3d(9%, -8%, 0) scale(0.92); }
+}
+
+@keyframes aurora-c {
+  from { transform: translate3d(0, 0, 0) scale(0.95); }
+  to   { transform: translate3d(6%, 10%, 0) scale(1.14); }
+}
+
+/* Grid, densest at the top left and gone before the text runs out. */
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(to right, var(--line) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(to bottom, var(--line) 0 1px, transparent 1px 34px);
+  -webkit-mask-image: radial-gradient(120% 150% at 4% 0%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(120% 150% at 4% 0%, #000 0%, transparent 78%);
+  opacity: 0.9;
+}
+
 .hero { padding-block: var(--space-16) var(--space-12); }
 .hero h1 { margin-bottom: var(--space-4); }
 
@@ -325,7 +418,8 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
   margin-bottom: var(--space-4);
 }
 
-/* Text column plus a photo slot. One column until there is room for both. */
+/* Text column plus a photo slot. The slot is parked, not dead: the markup is
+   commented out in index.html until a headshot exists. */
 .hero__grid { display: grid; gap: var(--space-8); align-items: start; }
 
 /* Placeholder box. aspect-ratio holds the square, so a real photo shifts no layout. */
@@ -409,31 +503,34 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
 .worked-with {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3) var(--space-6);
+  gap: var(--space-3);
   list-style: none;
   margin-top: var(--space-4);
 }
 
-/* Monochrome badges, one row height whatever the badge holds. A mask paints the
-   artwork in currentColor, so one rule covers both themes and any source SVG. */
+/* Monochrome badges. A mask paints the artwork in currentColor, so one rule covers
+   both themes and any source file, vector or transparent bitmap. */
 .logo-badge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-height: 28px;
+  min-height: 34px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.04em;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  filter: grayscale(1);
-  transition: color var(--dur-2) var(--ease-out);
+  transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out);
 }
 
-.logo-badge:hover { color: var(--text); }
+.logo-badge:hover { color: var(--text); border-color: var(--line-strong); }
 
 .logo-badge__mark {
   display: block;
-  height: 22px;
+  flex: none;
   background: currentColor;
   -webkit-mask-position: center;
   mask-position: center;
@@ -443,17 +540,34 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
   mask-size: contain;
 }
 
-/* One width per logo, from its own viewBox, so nothing is stretched. */
+/* One size per logo, from its own viewBox, so nothing is stretched. */
+.logo-badge__mark--taqa {
+  width: 53px; /* 117 x 29 */
+  height: 13px;
+  -webkit-mask-image: url("../assets/logos/taqa.svg");
+  mask-image: url("../assets/logos/taqa.svg");
+}
+
 .logo-badge__mark--adnoc {
-  width: 26px; /* symbol only, 76 x 64 */
+  width: 21px; /* symbol only, 76 x 64 */
+  height: 18px;
   -webkit-mask-image: url("../assets/logos/adnoc.svg");
   mask-image: url("../assets/logos/adnoc.svg");
 }
 
 .logo-badge__mark--42 {
-  width: 22px; /* 960 x 960 */
+  width: 17px; /* 960 x 960 */
+  height: 17px;
   -webkit-mask-image: url("../assets/logos/42.svg");
   mask-image: url("../assets/logos/42.svg");
+}
+
+/* A transparent bitmap masks exactly like a vector: the mask reads alpha, not colour. */
+.logo-badge__mark--khalifa {
+  width: 105px; /* latin wordmark only, 1500 x 157 */
+  height: 11px;
+  -webkit-mask-image: url("../assets/logos/khalifa-fund.png");
+  mask-image: url("../assets/logos/khalifa-fund.png");
 }
 
 /* The name behind a logo badge, for assistive tech and for images-off reading. */
@@ -835,5 +949,7 @@ main { view-transition-name: page-content; }
   .btn:hover, .card:hover { transform: none; }
   .btn { translate: none; }
   .cursor-dot, .cursor-ring { display: none; }
+  /* Settle the aurora at its keyframe start, not at a near-zero-duration end. */
+  .hero__bg span { animation: none !important; }
   @view-transition { navigation: none; }
 }
