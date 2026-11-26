@@ -76,12 +76,16 @@ const METRICS_AI = [
 // 0 EMX, 1 FEDROS OMNI, 2 Containerized platform, 3 Employee identity.
 const ROLES = {
   fde: {
+    value:
+      "I sit with the people who will use the system, then hand it over so they can keep changing it without me.",
     tagline: "Forward Deployed Engineer. AI systems, full-stack, cloud and infrastructure.",
     cv: "CV-fde.pdf",
     metrics: METRICS_FDE,
     order: [0, 1, 2, 3],
   },
   ai: {
+    value:
+      "I build LLM, agent and vision systems, then measure them on held-out data before they ship.",
     tagline: "AI/ML Engineer. LLM and agentic AI, computer vision and MLOps.",
     cv: "CV-ai.pdf",
     metrics: METRICS_AI,
@@ -89,6 +93,8 @@ const ROLES = {
   },
   // No CV states an MLOps metric, so this role reuses the AI set.
   mlops: {
+    value:
+      "I make a model observable: tracked runs, measured drift and a pipeline that runs the same way twice.",
     tagline:
       "MLOps and evaluation pipelines. Model monitoring with MLflow, Weights & Biases, Kubeflow and Airflow.",
     cv: "CV-ai.pdf",
@@ -96,6 +102,8 @@ const ROLES = {
     order: [2, 0, 1, 3],
   },
   freelance: {
+    value:
+      "Fixed scope, milestone based, and you own the code at the end.",
     tagline:
       "Contract engineer in Abu Dhabi. AI systems, full-stack delivery and secure infrastructure.",
     cv: "CV-fde.pdf",
@@ -118,6 +126,9 @@ function applyRole(name) {
   // Only index.html carries this attribute. The other pages keep their own line.
   const tagline = document.querySelector("[data-role-tagline]");
   if (tagline) tagline.textContent = role.tagline;
+
+  const value = document.querySelector("[data-role-value]");
+  if (value) value.textContent = role.value;
 
   document.querySelectorAll("[data-cv]").forEach((link) => {
     link.href = `./assets/${role.cv}`;

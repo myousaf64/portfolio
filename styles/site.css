@@ -260,6 +260,45 @@ html[data-scrolled] .site-header__inner { min-height: var(--header-h-sm); }
   margin-bottom: var(--space-8);
 }
 
+/* One line of value, under the role line. The text comes from ROLES in main.js. */
+.hero__value {
+  font-size: var(--step-0);
+  color: var(--text-muted);
+  max-width: var(--measure);
+  margin-bottom: var(--space-4);
+}
+
+/* Text column plus a photo slot. One column until there is room for both. */
+.hero__grid { display: grid; gap: var(--space-8); align-items: start; }
+
+/* Placeholder box. aspect-ratio holds the square, so a real photo shifts no layout. */
+.hero__photo {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero__photo span {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  color: var(--text-muted);
+  text-align: center;
+  padding: var(--space-3);
+}
+
+@media (min-width: 720px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-12); }
+  .hero__photo { max-width: 240px; }
+}
+
 /* ---------- availability and role switcher ---------- */
 
 .availability {

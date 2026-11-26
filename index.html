@@ -75,25 +75,37 @@
 
     <main id="main">
       <section class="hero container">
-        <h1 class="reveal">Mohammad Yousaf</h1>
-        <p class="hero__role reveal" data-role-tagline>
-          Forward Deployed Engineer. AI systems, full-stack, cloud and infrastructure.
-        </p>
-        <p class="hero__meta reveal">Abu Dhabi, UAE</p>
-        <p class="availability reveal">Open to full-time roles in the UAE, available now.</p>
-        <div class="btn-row reveal">
-          <a class="btn btn--primary" href="mailto:64yousaf@gmail.com">Email me</a>
-          <a class="btn btn--outlined" href="./assets/CV-fde.pdf" data-cv download>Download CV</a>
-          <a class="btn btn--outlined" href="#work">See my work</a>
+        <div class="hero__grid">
+          <div class="hero__text">
+            <h1 class="reveal">Mohammad Yousaf</h1>
+            <p class="hero__role reveal" data-role-tagline>
+              Forward Deployed Engineer. AI systems, full-stack, cloud and infrastructure.
+            </p>
+            <p class="hero__value reveal" data-role-value>
+              I sit with the people who will use the system, then hand it over so they can keep
+              changing it without me.
+            </p>
+            <p class="hero__meta reveal">Abu Dhabi, UAE</p>
+            <p class="availability reveal">Open to full-time roles in the UAE, available now.</p>
+            <div class="btn-row reveal">
+              <a class="btn btn--primary" href="mailto:64yousaf@gmail.com">Email me</a>
+              <a class="btn btn--outlined" href="./assets/CV-fde.pdf" data-cv download>Download CV</a>
+              <a class="btn btn--outlined" href="#work">See my work</a>
+            </div>
+            <nav class="role-switch reveal" aria-label="Choose a role view">
+              <ul>
+                <li><a href="?role=fde" aria-current="true">Forward deployed</a></li>
+                <li><a href="?role=ai">AI engineering</a></li>
+                <li><a href="?role=mlops">MLOps</a></li>
+                <li><a href="?role=freelance">Freelance</a></li>
+              </ul>
+            </nav>
+          </div>
+          <!-- Placeholder: swap the inner div for <img src="./assets/headshot.webp" alt="Mohammad Yousaf"> -->
+          <div class="hero__photo reveal" aria-hidden="true">
+            <span>Placeholder: headshot</span>
+          </div>
         </div>
-        <nav class="role-switch reveal" aria-label="Choose a role view">
-          <ul>
-            <li><a href="?role=fde" aria-current="true">Forward deployed</a></li>
-            <li><a href="?role=ai">AI engineering</a></li>
-            <li><a href="?role=mlops">MLOps</a></li>
-            <li><a href="?role=freelance">Freelance</a></li>
-          </ul>
-        </nav>
       </section>
 
       <section class="section container" aria-label="Selected results">
