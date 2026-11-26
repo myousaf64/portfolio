@@ -75,6 +75,8 @@
 
     <main id="main">
       <section class="hero container">
+        <!-- Banner layers. Decoration only: aurora and grid live in site.css. -->
+        <div class="hero__bg" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="hero__grid">
           <div class="hero__text">
             <h1 class="reveal">Mohammad Yousaf</h1>
@@ -101,10 +103,12 @@
               </ul>
             </nav>
           </div>
-          <!-- Placeholder: swap the inner div for <img src="./assets/headshot.webp" alt="Mohammad Yousaf"> -->
+          <!-- TODO: headshot. Drop assets/headshot.webp in, then uncomment this and
+               swap the inner div for <img src="./assets/headshot.webp" alt="Mohammad Yousaf">.
           <div class="hero__photo reveal" aria-hidden="true">
             <span>Placeholder: headshot</span>
           </div>
+          -->
         </div>
       </section>
 

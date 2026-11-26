@@ -70,6 +70,11 @@
   --fx-glow: 0px;
   --fx-bloom: rgba(38, 49, 204, 0.05);
 
+  /* hero banner aurora - restrained on the light page */
+  --banner-a: rgba(38, 49, 204, 0.30);
+  --banner-b: rgba(20, 130, 200, 0.26);
+  --banner-c: rgba(100, 110, 150, 0.24);
+
   color-scheme: light;
 }
 
@@ -97,6 +102,9 @@
     --fx-link: rgba(142, 151, 255, 0.3);
     --fx-glow: 7px;
     --fx-bloom: rgba(142, 151, 255, 0.12);
+    --banner-a: rgba(142, 151, 255, 0.42);
+    --banner-b: rgba(80, 220, 255, 0.30);
+    --banner-c: rgba(190, 120, 255, 0.30);
     color-scheme: dark;
   }
 }
@@ -122,5 +130,8 @@
   --fx-link: rgba(142, 151, 255, 0.3);
   --fx-glow: 7px;
   --fx-bloom: rgba(142, 151, 255, 0.12);
+  --banner-a: rgba(142, 151, 255, 0.42);
+  --banner-b: rgba(80, 220, 255, 0.30);
+  --banner-c: rgba(190, 120, 255, 0.30);
   color-scheme: dark;
 }
